@@ -30,3 +30,7 @@ body {
 .textblack {
     color: #000000;
 }
+
+.pswmeter {
+    width: 65%;
+}
