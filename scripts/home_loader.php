@@ -8,6 +8,7 @@
     <meta name="robots" content="All">
     <meta name="description" content="匿名で簡単にファイルをアップロードできます。End2End暗号化対応・ノーログで、安心安全のオープンソースです。">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/js/pswmeter.js"></script>
     <script src="/js/index.js"></script>
     <link href="/css/index.css" rel="stylesheet">
   </head>
@@ -41,7 +42,9 @@
               データのE2E暗号化パスワードを設定する<br>
               <span id="setPasswordInput" class="default-remove">
                 パスワード:
-                <input name="passwd" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" />
+                <input name="passwd" id="password" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" />
+                <div id="pswmeter"></div>
+                <div id="pswmetermsg"></div>
               </span>
             </div>
             <br>

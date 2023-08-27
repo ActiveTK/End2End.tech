@@ -97,6 +97,11 @@
     require_once( "../scripts/home_loader.php" );
     exit();
   }
+  else if ( request_path == "js/pswmeter.js" ) {
+    header( "Content-Type: text/javascript" );
+    readfile( "../lib/pswmeter.js" );
+    exit();
+  }
 
   // ファイルが存在しない場合
   header( "HTTP/1.1 404 Not Found" );

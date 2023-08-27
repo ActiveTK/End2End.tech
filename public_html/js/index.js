@@ -20,6 +20,14 @@
             _("setPasswordInput").classList.toggle("default-remove");
         }
 
+        const pswmeter = passwordStrengthMeter({
+            containerElement: '#pswmeter',
+            passwordInput: '#password',
+            showMessage: true,
+            messageContainer: '#pswmetermsg',
+            borderRadius: 2
+        });
+
     });
 
 
