@@ -82,7 +82,7 @@
       </form>
     </div>
 
-    <?php require_once("../script/footer.php"); ?>
+    <?php require_once("../scripts/footer.php"); ?>
 
   </body>
 </html>
