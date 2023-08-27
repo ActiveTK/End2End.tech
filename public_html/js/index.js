@@ -10,9 +10,17 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        _("main").style.display = "block";
-    });
 
+        _("main").style.display = "block";
+
+        _("setLimitDownload").onchange = function () {
+            _("setLimitDownloadInput").classList.toggle("default-remove");
+        }
+        _("setPassword").onchange = function () {
+            _("setPasswordInput").classList.toggle("default-remove");
+        }
+
+    });
 
 
 }(window));

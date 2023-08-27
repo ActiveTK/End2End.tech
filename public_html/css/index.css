@@ -10,3 +10,13 @@ body {
 .main {
     display: none;
 }
+
+.maxDownloadCount {
+    width: 120px;
+    height: 40px;
+    text-align: right;
+}
+
+.default-remove {
+    display: none;
+}
