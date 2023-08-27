@@ -30,8 +30,8 @@
 
         _("password").onchange = function () {
             if (_("password").value) {
-                _("pswmeter").display.style = "inline";
-                _("pswmetermsg").display.style = "inline";
+                _("pswmeter").style.display = "inline";
+                _("pswmetermsg").style.display = "inline";
             }
         }
 
