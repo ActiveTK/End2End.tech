@@ -42,9 +42,11 @@
               データのE2E暗号化パスワードを設定する<br>
               <span id="setPasswordInput" class="default-remove">
                 パスワード:
-                <input name="passwd" id="password" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" />
-                <div id="pswmeter"></div>
-                <div id="pswmetermsg"></div>
+                <div>
+                  <input name="passwd" id="password" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" />
+                  <div id="pswmeter"></div>
+                  <div id="pswmetermsg"></div>
+                </div>
               </span>
             </div>
             <br>
