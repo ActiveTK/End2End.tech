@@ -97,6 +97,22 @@
     require_once( "../scripts/home_loader.php" );
     exit();
   }
+  else if ( request_path == "about" ) {
+    require_once( "../scripts/about.php" );
+    exit();
+  }
+  else if ( request_path == "license" ) {
+    require_once( "../scripts/license.php" );
+    exit();
+  }
+  else if ( request_path == "contact" ) {
+    require_once( "../scripts/contact.php" );
+    exit();
+  }
+  else if ( request_path == "donate" ) {
+    require_once( "../scripts/donate.php" );
+    exit();
+  }
   else if ( request_path == "js/pswmeter.js" ) {
     header( "Content-Type: text/javascript" );
     readfile( "../lib/pswmeter.js" );
