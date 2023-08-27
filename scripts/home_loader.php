@@ -32,10 +32,8 @@
         <div class="textblack flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80">
 
           <div class="textcenter order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-1/2" id="uploadzone">
-            <br><br>
-            <p>ここにファイルをドラッグ&ドロップして下さい。</p>
-            <br>
-            <p>または、ファイルを選択(100MB以内):</p>
+            <p class="mt-[3rem]">ここにファイルをドラッグ&ドロップして下さい。</p>
+            <p class="mt-5">または、ファイルを選択(100MB以内):</p>
             <input id="file" name="file" type="file" required>
           </div>
 
