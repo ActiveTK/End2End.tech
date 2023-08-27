@@ -56,11 +56,12 @@
                 <input name="maxDownloadCount" type="number" class="maxDownloadCount border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition focus:ring" value="0" />
               </span>
             </div>
+            <br>
             <div class="sm:col-span-2">
               <input type="checkbox" id="setDateLimit" name="setDateLimit" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               ダウンロード期限を設定する<br>
               <span id="setDateLimitInput" class="default-remove">
-                ダウンロード期限:
+                ダウンロード期限(JST):
                 <input type="datetime-local" name="DownloadLimit" step="300">
               </span>
             </div>
