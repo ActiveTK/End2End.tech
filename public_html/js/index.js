@@ -38,6 +38,15 @@
             }
         }
 
+        _("uploadzone").addEventListener('drop', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var files = e.dataTransfer.files;
+            if (files.length > 1)
+               return alert('同時にアップロードできるファイルは1つまでです。');
+            _("file").files = files;
+        }, false);
+
     });
 
 

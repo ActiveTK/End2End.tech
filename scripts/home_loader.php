@@ -30,10 +30,12 @@
       <form action="" enctype="multipart/form-data" method="POST" class="mx-auto max-w-screen-2xl px-4 md:px-8" id="uploader">
         <div class="textblack flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80">
 
-          <div class="order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-1/2">
+          <div class="textcenter order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-1/2" id="uploadzone">
             <br>
-            <p>ファイルをアップロードして共有(100MB以内):</p>
-            <input name="file" type="file"><br><br>
+            <p>ファイルをドラッグ&ドロップまたは選択(100MB以内):</p>
+            <label class="selectFile">
+              <input id="file" name="file" type="file">
+            </label> 
           </div>
 
           <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-1/2">
@@ -70,7 +72,7 @@
         <br>
         <div align="center">
           <br>
-          <input type="submit" name="submitData" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" value="利用規約に同意して共有">
+          <input type="submit" name="submitData" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" value="利用規約に同意してアップロード">
         </div>
       </form>
     </div>

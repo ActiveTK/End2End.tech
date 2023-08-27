@@ -34,3 +34,14 @@ body {
 .pswmeter {
     width: 65%;
 }
+
+.selectFile {
+    padding: 10px 40px;
+    color: #ffffff;
+    background-color: #384878;
+    cursor: pointer;
+}
+
+.textcenter {
+    text-align: center;
+}
