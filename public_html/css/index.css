@@ -17,6 +17,12 @@ body {
     text-align: right;
 }
 
+.setPassword {
+    width: 240px;
+    height: 40px;
+    text-align: left;
+}
+
 .default-remove {
     display: none;
 }

@@ -40,10 +40,11 @@
               <input type="checkbox" id="setPassword" name="setPassword" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               データのE2E暗号化パスワードを設定する<br>
               <span id="setPasswordInput" class="default-remove">
-                <label for="passwd" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">パスワード:</label>
-                <input name="passwd" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" />
+                パスワード:
+                <input name="passwd" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" />
               </span>
             </div>
+            <br>
             <div class="sm:col-span-2">
               <input type="checkbox" id="setLimitDownload" name="setLimitDownload" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               最大ダウンロード回数を設定する<br>
