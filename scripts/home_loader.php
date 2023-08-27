@@ -122,6 +122,9 @@
             <div class="mb-4 font-bold uppercase tracking-widest text-gray-100">et cetera</div>
             <nav class="flex flex-col gap-4">
               <div>
+                <a href="/donate" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">寄付する</a>
+              </div>
+              <div>
                 <a href="/sitemap.xml" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">sitemap.xml</a>
               </div>
             </nav>
