@@ -19,6 +19,9 @@
         _("setPassword").onchange = function () {
             _("setPasswordInput").classList.toggle("default-remove");
         }
+        _("setDateLimit").onchange = function () {
+            _("setDateLimitInput").classList.toggle("default-remove");
+        }
 
         const pswmeter = passwordStrengthMeter({
             containerElement: '#pswmeter',
