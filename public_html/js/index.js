@@ -46,6 +46,13 @@
                return alert('同時にアップロードできるファイルは1つまでです。');
             _("file").files = files;
         }, false);
+        _("uploadzone").addEventListener('dragover', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+        }, false);
+        _("uploadzone").addEventListener('dragleave', function (e) {
+            e.stopPropagation();
+        }, false);
 
     });
 

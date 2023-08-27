@@ -32,7 +32,7 @@
 
           <div class="textcenter order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-1/2" id="uploadzone">
             <br><br>
-            <p>ファイルをここにドラッグ&ドロップして下さい。</p>
+            <p>ここにファイルをドラッグ&ドロップして下さい。</p>
             <br>
             <p>または、ファイルを選択(100MB以内):</p>
             <input id="file" name="file" type="file">
