@@ -31,11 +31,10 @@
         <div class="textblack flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80">
 
           <div class="textcenter order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-1/2" id="uploadzone">
-            <br>
-            <p>ファイルをドラッグ&ドロップまたは選択(100MB以内):</p>
-            <label class="selectFile">
-              <input id="file" name="file" type="file">
-            </label> 
+            <br><br>
+            <p>ファイルをここにドラッグ&ドロップして下さい。</p>
+            <p>または、ファイルを選択(100MB以内):</p>
+            <input id="file" name="file" type="file">
           </div>
 
           <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-1/2">
