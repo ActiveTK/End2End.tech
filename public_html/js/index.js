@@ -5,10 +5,6 @@
 "use strict";
 (function (window, undefined) {
 
-    function _(targetName) {
-        return document.getElementById(targetName);
-    }
-
     document.addEventListener("DOMContentLoaded", function () {
 
         _("main").style.display = "block";
@@ -54,7 +50,50 @@
             e.stopPropagation();
         }, false);
 
+        _("uploader").onsubmit = function () {
+            sendFile();
+            return false;
+        }
+
     });
+
+    function sendFile(Data) {
+
+        $.ajax({
+            xhr: function () {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function (evt) {
+                    if (evt.lengthComputable)
+                        _("stat").innerText = "送信中。。(" + (evt.loaded / evt.total * 100).toFixed(2) + "%完了)";
+                }, false);
+                return xhr;
+            },
+            url: "https://api.end2end.tech/upload",
+            type: "POST",
+            data: Data,
+            cache: !1,
+            contentType: !1,
+            processData: !1,
+            dataType: "json"
+
+        }).done(function (t) {
+
+            for (let b in t) {
+                if (b == "error") {
+                    _("stat").innerText = t[b];
+                }
+                else {
+                    window.location.href = "file?q=" + t["hash"];
+                }
+            }
+
+        }).fail(function (t, e, o) {
+
+            _("stat").innerText = "送信に失敗しました。詳細:" + o;
+
+        });
+
+    }
 
 
 }(window));

@@ -9,6 +9,7 @@
     <meta name="description" content="匿名で簡単にファイルをアップロードできます。End2End暗号化対応・ノーログで、安心安全のオープンソースです。">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/js/pswmeter.js"></script>
+    <script src="https://code.activetk.jp/ActiveTK.min.js"></script>
     <script src="/js/index.js"></script>
     <link href="/css/index.css" rel="stylesheet">
   </head>
@@ -35,7 +36,7 @@
             <p>ここにファイルをドラッグ&ドロップして下さい。</p>
             <br>
             <p>または、ファイルを選択(100MB以内):</p>
-            <input id="file" name="file" type="file">
+            <input id="file" name="file" type="file" required>
           </div>
 
           <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-1/2">
@@ -75,9 +76,10 @@
           </div>
         </div>
         <br>
-        <div align="center">
+        <div class="textblack" align="center">
           <br>
           <input type="submit" name="submitData" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" value="利用規約に同意してアップロード">
+          <p id="stat"></p>
         </div>
       </form>
     </div>
