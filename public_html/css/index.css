@@ -1,0 +1,12 @@
+/*!
+ * index.css - End2End.tech
+ */
+
+body {
+    color: #00bb00;
+    background-color: #000000;
+}
+
+.main {
+    display: none;
+}

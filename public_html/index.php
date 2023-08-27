@@ -94,8 +94,10 @@
 
   // ホーム
   if ( empty( request_path ) ) {
-    exit( "just setting up my end2end dot tech" );
+    require_once( "../scripts/home_loader.php" );
+    exit();
   }
 
+  // ファイルが存在しない場合
   header( "HTTP/1.1 404 Not Found" );
   die( "HTTP 404 - Not Found" );
