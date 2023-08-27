@@ -51,7 +51,30 @@
         }, false);
 
         _("uploader").onsubmit = function () {
-            sendFile();
+
+            if (_("setPassword").checked) {
+                let reader = new FileReader();
+                reader.readAsBinaryString(_("file").files[0], 'UTF-8');
+                reader.onload = () => {
+                    console.log(reader.result);
+
+                    var secret_passphrase = CryptoJS.enc.Utf8.parse( _("password").value );
+                    var salt = CryptoJS.lib.WordArray.random(128 / 8);
+                    var key128Bits500Iterations =
+                        CryptoJS.PBKDF2(secret_passphrase, salt, { keySize: 128 / 8, iterations: 500 });
+                    var iv = CryptoJS.lib.WordArray.random(128 / 8);
+                    var options = { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 };
+                    var message_text = CryptoJS.enc.Utf8.parse($('#encypt-text').val());
+                    var encrypted = CryptoJS.AES.encrypt(message_text, key128Bits500Iterations, options);
+
+                    var binary_data = CryptoJS.enc.Hex.stringify(salt) + ',' + CryptoJS.enc.Hex.stringify(iv) + ',' + encrypted;
+
+                    sendFile(new FormData($("#uploader").get(0)));
+                };
+            }
+            else
+                sendFile(new FormData($("#uploader").get(0)));
+
             return false;
         }
 
