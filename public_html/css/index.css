@@ -20,3 +20,7 @@ body {
 .default-remove {
     display: none;
 }
+
+.textblack {
+    color: #000000;
+}

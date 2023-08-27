@@ -27,7 +27,7 @@
 
     <div id="main" class="main py-6 sm:py-8 lg:py-12">
       <form action="" enctype="multipart/form-data" method="POST" class="mx-auto max-w-screen-2xl px-4 md:px-8" id="uploader">
-        <div class="flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80">
+        <div class="textblack flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80">
 
           <div class="order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-1/2">
             <br>
@@ -37,14 +37,16 @@
 
           <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-1/2">
             <div class="sm:col-span-2">
-              <input type="checkbox" id="setPassword" name="setPassword">データのE2E暗号化パスワードを設定する<br>
+              <input type="checkbox" id="setPassword" name="setPassword" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              データのE2E暗号化パスワードを設定する<br>
               <span id="setPasswordInput" class="default-remove">
                 <label for="passwd" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">パスワード:</label>
                 <input name="passwd" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" />
               </span>
             </div>
             <div class="sm:col-span-2">
-              <input type="checkbox" id="setLimitDownload" name="setLimitDownload">最大ダウンロード回数を設定する<br>
+              <input type="checkbox" id="setLimitDownload" name="setLimitDownload" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              最大ダウンロード回数を設定する<br>
               <span id="setLimitDownloadInput" class="default-remove">
                 最大ダウンロード回数(0で無制限):
                 <input name="maxDownloadCount" type="number" class="maxDownloadCount border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition focus:ring" value="0" />
