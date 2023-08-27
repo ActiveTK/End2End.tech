@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{HTTP_HOST} ^www\.end2end\.tech$ [OR]
+RewriteCond %{HTTP_HOST} ^end2end\.tech$
+RewriteRule (.*) index.php/?%{QUERY_STRING}&request=$1 [L]
+
+AddDefaultCharset UTF-8
