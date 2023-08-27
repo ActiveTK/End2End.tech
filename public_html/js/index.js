@@ -28,6 +28,13 @@
             borderRadius: 2
         });
 
+        _("password").onchange = function () {
+            if (_("password").value) {
+                _("pswmeter").display.style = "inline";
+                _("pswmetermsg").display.style = "inline";
+            }
+        }
+
     });
 
 
