@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <title>End2End.tech - Anonymous File Uploader</title>
+    <title>お問い合わせ - End2End.tech</title>
     <meta name="robots" content="All">
-    <meta name="description" content="匿名で簡単にファイルをアップロードできます。End2End暗号化対応・ノーログで、安心安全のオープンソースです。">
+    <meta name="description" content="お問い合わせフォームです。">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/js/index.js"></script>
-    <link href="/css/index.css" rel="stylesheet">
+    <script src="/js/download.js"></script>
+    <link href="/css/download.css" rel="stylesheet">
   </head>
   <body>
 
     <br>
     <h1 class="text-3xl font-bold" align="center">
-      End2End.tech - Anonymous File Uploader
+      お問い合わせ - End2End.tech
     </h1>
     <br>
 
@@ -26,7 +26,14 @@
     </noscript>
 
     <div id="main" class="main py-6 sm:py-8 lg:py-12">
-      
+      <div class="mx-auto max-w-screen-md px-4 md:px-8">
+
+        <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4"></h1>
+        <p class="mb-6 sm:text-lg md:mb-8">
+          
+        </p>
+
+      </div>
     </div>
 
     <?php require_once("../scripts/footer.php"); ?>
