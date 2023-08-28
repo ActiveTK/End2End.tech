@@ -27,3 +27,6 @@ body {
     color: #4169e1;
 }
 
+.flex {
+    display: flex;
+}

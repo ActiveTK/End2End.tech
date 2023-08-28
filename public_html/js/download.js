@@ -36,7 +36,7 @@
 				return;
 
 			var xhr = new XMLHttpRequest
-			xhr.open('GET', 'https://api.end2end.tech/remove?id=' + window.end2endtech.FileID + "&password=" + atk.encode(_("remove-password").value));
+			xhr.open('GET', 'https://api.end2end.tech/delete?id=' + window.end2endtech.FileID + "&password=" + atk.encode(_("remove-password").value));
 			xhr.responseType = 'json';
 			xhr.onreadystatechange = function (evt) {
 				if (xhr.readyState === 4) {
