@@ -31,6 +31,11 @@
     require_once( "../../api/upload.php" );
     exit();
   }
+  else if ( request_path == "download" ) {
+    header( "Access-Control-Allow-Origin: *" );
+    require_once( "../../api/download.php" );
+    exit();
+  }
   else {
     
   }

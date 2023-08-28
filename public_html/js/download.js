@@ -15,26 +15,32 @@
 
 		_("downloadData").onclick = function () {
 			if (window.end2endtech.Encrypted === true) {
-
+				DownloadFile(window.end2endtech.FileID, function (result) {
+					_("stat").innerText = "ファイルを複合化しています..。";
+					window.navigator.msSaveBlob(new Blob([result], { "type": "application/force-download" }), window.end2endtech.FileName);
+				});
 			}
 			else {
-				DownloadFile(window.end2endtech.FileID);
+				DownloadFile(window.end2endtech.FileID, function (result) {
+					window.navigator.msSaveBlob(new Blob([result], { "type": "application/force-download" }), window.end2endtech.FileName);
+				});
 			}
         }
 
     });
 
-	function DownloadFile(fileid) {
+	function DownloadFile(fileid, callback) {
 
 		var xhr = new XMLHttpRequest
 		xhr.open('GET', 'https://api.end2end.tech/download?id=' + fileid);
 		xhr.onprogress = function (evt) {
-			_("stat").innerText = (100 * evt.loaded / evt.total | 0) + "%ダウンロード完了";
+			_("stat").innerText = "ダウンロード中..(" + (100 * evt.loaded / evt.total | 0) + "%完了)..。";
 		};
 		xhr.onreadystatechange = function (evt) {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
-					alert('ダウンロード完了');
+					_("stat").innerText = "ダウンロードが完了しました。";
+					callback(xhr.responseText);
 				}
 			}
 		}
