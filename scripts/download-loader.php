@@ -68,7 +68,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.activetk.jp/ActiveTK.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
-    <script>window.end2endtech={FileID:"<?=$FileID?>",FileName:atk.decode("<?=urlencode(basename( FileInfo["FileName"] ))?>"),Encrypted:<?=(defined("DataEncrypted"))?>};</script>
+    <script>window.end2endtech={FileID:"<?=$FileID?>",FileName:atk.decode("<?=urlencode(basename( FileInfo["FileName"] ))?>"),Encrypted:<?=(defined("DataEncrypted")?"true":"false")?>};</script>
     <script src="/js/download.js"></script>
     <link href="/css/download.css" rel="stylesheet">
   </head>
@@ -89,7 +89,7 @@
     <div id="main" class="main py-6 sm:py-8 lg:py-12">
 
       <div class="mx-auto max-w-screen-md px-4 md:px-8">
-        <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">ファイルの概要</h1>
+        <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">【ファイルの概要】</h1>
 
         <p class="mb-6 sm:text-lg md:mb-8">
           ファイル名: <?=$FileName?><br>
@@ -98,7 +98,7 @@
           アップロード日時: <?=date("Y/m/d - M (D) H:i:s", FileInfo["UploadDate"])?>
         </p>
 
-        <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">ファイルをダウンロード</h2>
+        <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">【ファイルをダウンロード】</h2>
 
         <p class="mb-6 sm:text-lg md:mb-8">
         
@@ -112,6 +112,9 @@
             <?php } ?>
             <input type="button" id="downloadData" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" value="ファイルをダウンロード">
           <?php } ?>
+
+          <br>
+          <span id="stat"></span>
 
         </p>
 
