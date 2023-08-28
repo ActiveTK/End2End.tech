@@ -180,7 +180,7 @@
 
     }
 
-    function createNewURLwithFileID(FileDetails) {
+    function createNewURL(FileDetails) {
 
         if (!FileDetails["FileID"])
             return;
