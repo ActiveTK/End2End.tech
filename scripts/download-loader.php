@@ -89,7 +89,7 @@
     <div id="main" class="main py-6 sm:py-8 lg:py-12">
       ファイルサイズ: <?=$FileSize?><br>
       ハッシュ: <?=$FileHash?><br>
-      <?php if ( defined( "DownloadBlocked" ) ) ?>
+      <?php if ( defined( "DownloadBlocked" ) ) { ?>
         <p><?=DownloadBlocked?></p>
       <?php } else { ?>
         <p>u r able 2download.</p>
