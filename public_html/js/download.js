@@ -17,12 +17,14 @@
 			if (window.end2endtech.Encrypted === true) {
 				DownloadFile(window.end2endtech.FileID, function (result) {
 					_("stat").innerText = "ファイルを複合化しています..。";
-					window.navigator.msSaveBlob(new Blob([result], { "type": "application/force-download" }), window.end2endtech.FileName);
+					DownloadFileFromBlob(new Blob([result], { "type": "application/force-download" }), window.end2endtech.FileName);
+					_("stat").innerText = "";
 				});
 			}
 			else {
 				DownloadFile(window.end2endtech.FileID, function (result) {
-					window.navigator.msSaveBlob(new Blob([result], { "type": "application/force-download" }), window.end2endtech.FileName);
+					DownloadFileFromBlob(new Blob([result], { "type": "application/force-download" }), window.end2endtech.FileName);
+					_("stat").innerText = "";
 				});
 			}
         }
@@ -46,6 +48,19 @@
 		}
 		xhr.send();
 
-    }
+	}
+
+	function DownloadFileFromBlob(blob, filename) {
+		window.dataurl = window.URL.createObjectURL(blob);
+		const a = document.createElement("a");
+		document.body.appendChild(a);
+		a.download = filename;
+		a.href = window.dataurl;
+		a.click();
+		a.remove();
+		setTimeout(function () {
+			URL.revokeObjectURL(window.dataurl);
+		}, 20000);
+	}
 
 }(window));
