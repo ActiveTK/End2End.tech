@@ -82,7 +82,6 @@
                                 padding: CryptoJS.pad.Pkcs7
                             }
                         );
-                    console.log(enc);
                     _("password").removeAttribute("name");
 
                     let list = new DataTransfer();
