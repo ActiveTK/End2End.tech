@@ -37,8 +37,11 @@
         <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">ファイルの新規アップロード</h1>
         <p class="mb-6 sm:text-lg md:mb-8">
           ファイルを新規にアップロードするには、以下のURLにPOSTリクエストを送信して下さい。
-
         </p>
+
+        <pre class="line-numbers"><code class="language-Bash">curl https://api.end2end.tech/upload
+  -X POST
+  -F file=@/fakepath/helloworld.png</code></pre>
 
       </div>
     </div>

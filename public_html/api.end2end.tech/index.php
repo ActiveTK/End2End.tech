@@ -24,7 +24,8 @@
 
   // ホーム
   if ( empty( request_path ) ) {
-    exit( "API Docs" );
+    require_once( "../../api/docs.php" );
+    exit();
   }
   else if ( request_path == "upload" ) {
     header( "Access-Control-Allow-Origin: *" );
@@ -39,10 +40,6 @@
   else if ( request_path == "delete" ) {
     header( "Access-Control-Allow-Origin: *" );
     require_once( "../../api/delete.php" );
-    exit();
-  }
-  else {
-    require_once( "../../api/docs.php" );
     exit();
   }
 
