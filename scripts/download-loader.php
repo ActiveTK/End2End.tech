@@ -116,7 +116,7 @@
 
           <br>
           <span id="stat"></span>
-
+          <br>
         </p>
 
         <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">【ファイルを削除】</h1>

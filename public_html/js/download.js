@@ -45,7 +45,7 @@
 
 						_("stat").innerText = "";
 					} catch (e) {
-						_("stat").innerText = "複合化に失敗しました: " + e.Message;
+						_("stat").innerText = "複合化に失敗しました。パスワードが合っているか、再度確認して下さい。";
 					}
 				}
 				else {
