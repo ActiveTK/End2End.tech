@@ -9,6 +9,10 @@
 
         _("main").style.display = "block";
 
+        if (window.end2endtech.Encrypted === true) {
+
+        }
+
     });
 
 }(window));
