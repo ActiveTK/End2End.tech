@@ -101,12 +101,17 @@
                     _("file").files = list.files;
 
                     enc = "";
+
+                    setTimeout(function () {
+                        sendFile(new FormData($("#uploader").get(0)));
+                    }, 10);
                 };
             }
-
-            setTimeout(function () {
-                sendFile(new FormData($("#uploader").get(0)));
-            }, 10);
+            else {
+                setTimeout(function () {
+                    sendFile(new FormData($("#uploader").get(0)));
+                }, 10);
+            }
 
             return false;
         }

@@ -31,6 +31,9 @@
     require_once( "../../api/upload.php" );
     exit();
   }
+  else {
+    
+  }
 
   // ファイルが存在しない場合
   header( "HTTP/1.1 404 Not Found" );
