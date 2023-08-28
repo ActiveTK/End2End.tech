@@ -32,6 +32,26 @@
 
     $Hash = hash_file( 'sha256', $_FILES['file']['tmp_name'] );
 
+    $DownloadLimit = "0";
+    if ( isset( $_POST["setLimitDownload"] ) && isset( $_POST["maxDownloadCount"] ) ) {
+
+      if ( !is_numeric( $_POST["maxDownloadCount"] ) || $_POST["maxDownloadCount"] * 1 < 0 )
+        die( json_encode( array( "Error"=>"エラー: 最大ダウンロード回数には、非負整数のみ指定できます。" ) ) );
+
+      $DownloadLimit = $_POST["maxDownloadCount"];
+
+    }
+
+    $BlockVPN = "false";
+    if ( isset( $_POST["blockVPN"] ) ) {
+        $BlockVPN = "true";
+    }
+
+    $IsEncrypted = "false";
+    if ( isset( $_POST["setPassword"] ) ) {
+        $IsEncrypted = "true";
+    }
+
     try {
       $stmt = $dbh->prepare(
         "insert into UploadFiles(

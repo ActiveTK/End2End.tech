@@ -67,6 +67,10 @@
                 _("DownloadLimit").removeAttribute("name");
 
             if (_("setPassword").checked) {
+
+                if (!_("password").value)
+                    return alert("パスワードを指定して下さい。");
+
                 let reader = new FileReader();
                 reader.readAsBinaryString(_("file").files[0], 'UTF-8');
                 reader.onload = () => {
