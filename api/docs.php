@@ -43,10 +43,50 @@
   -X POST
   -F file=@/fakepath/helloworld.png</code></pre>
 
+        <p class="mb-6 sm:text-lg md:mb-8">
+          レスポンスは以下のようになります。
+        </p>
+
+        リクエストに成功した場合:
+        <pre class="line-numbers"><code class="language-Json">{
+  "Status": "OK",
+  "FileID": "ファイルID",
+  "FileName": "ファイル名",
+  "URL": "ファイルのダウンロード用URL",
+  "SHA256": "ファイルのSHA256ハッシュ",
+  "RemovePassword": "ファイルの削除パスワード"
+}</code></pre>
+
+        リクエストに失敗した場合:
+        <pre class="line-numbers"><code class="language-Json">{
+  "Error": "エラーの詳細メッセージ"
+}</code></pre>
+
+        <p class="mb-6 sm:text-lg md:mb-8">
+          また、以下のようにリクエストにオプションを付属させることもできます。
+        </p>
+
+        <pre class="line-numbers"><code class="language-Bash">curl https://api.end2end.tech/upload
+  -X POST
+  -F file=@/fakepath/helloworld.png
+  -F 'setLimitDownload=on'
+  -F 'maxDownloadCount=100'
+  -F 'blockVPN=on'</code></pre>
+
+        <p class="mb-6 sm:text-lg md:mb-8">
+          現在、対応しているオプションは以下の通りです。
+        </p>
+
+        <li>blockVPN: onに設定すると、VPNやTorを経由したファイルのダウンロードを拒否します。</li>
+        <li>setLimitDownload: onに設定すると、ファイルの最大ダウンロード回数を設定できます。maxDownloadCountと組み合わせて使用して下さい。</li>
+        <li>maxDownloadCount: ファイルの最大ダウンロード回数を数値で指定できます。利用には、setLimitDownloadが必須です。</li>
+        <li>setDateLimit: onに設定すると、ファイルのダウンロード期限を設定できます。DownloadLimitと組み合わせて使用して下さい。</li>
+        <li>DownloadLimit: ファイルのダウンロード期限を指定できます。strtotimeで処理できる形式で指定して下さい。利用には、DownloadLimitが必須です。</li>
+
       </div>
     </div>
 
-    <?php require_once("../scripts/footer.php"); ?>
+    <?php require_once("../../scripts/footer.php"); ?>
 
   </body>
 </html>
