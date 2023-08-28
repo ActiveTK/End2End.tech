@@ -89,6 +89,8 @@
                     list.items.add(file);
                     _("file").files = list.files;
 
+                    enc = "";
+
                     sendFile(new FormData($("#uploader").get(0)));
                 };
             }
