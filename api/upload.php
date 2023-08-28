@@ -54,7 +54,7 @@
 
     $DateLimit = "";
     if ( isset( $_POST["setDateLimit"] ) && isset( $_POST["DownloadLimit"] ) ) {
-        $DateLimit = @strtotime( $_POST["DownloadLimit"] )
+        $DateLimit = @strtotime( $_POST["DownloadLimit"] );
     }
 
     try {
