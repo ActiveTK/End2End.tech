@@ -32,6 +32,7 @@
 
         <p class="mb-6 sm:text-lg md:mb-8">
           End2End.techでは、外部のスクリプトやコマンドラインから簡単にファイルをアップロードできるAPIを用意しています。
+          これらのAPIの利用に登録は必要ありませんが、極端にサーバーへ負荷をかける行為やスクレイピングなどはお止めください。
         </p>
 
         <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">ファイルの新規アップロード</h1>
@@ -88,6 +89,8 @@
         <li>maxDownloadCount: ファイルの最大ダウンロード回数を数値で指定できます。利用には、setLimitDownloadが必須です。</li>
         <li>setDateLimit: onに設定すると、ファイルのダウンロード期限を設定できます。DownloadLimitと組み合わせて使用して下さい。</li>
         <li>DownloadLimit: ファイルのダウンロード期限を指定できます。strtotimeで処理できる形式で指定して下さい。利用には、DownloadLimitが必須です。</li>
+
+        <br>
 
         <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">ファイルのダウンロード</h1>
         <p class="mb-6 sm:text-lg md:mb-8">
