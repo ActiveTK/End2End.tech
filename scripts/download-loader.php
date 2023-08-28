@@ -87,16 +87,33 @@
     </noscript>
 
     <div id="main" class="main py-6 sm:py-8 lg:py-12">
-      ファイルサイズ: <?=$FileSize?><br>
-      ハッシュ: <?=$FileHash?><br>
-      <?php if ( defined( "DownloadBlocked" ) ) { ?>
-        <p><?=DownloadBlocked?></p>
-      <?php } else { ?>
-        <p>u r able 2download.</p>
-        <?php if ( defined( "DataEncrypted" ) ) { ?>
-          <p>btw, maybe file is encrypted.. enter the pwd plz!</p>
-        <?php } ?>
-      <?php } ?>
+
+      <div class="mx-auto max-w-screen-md px-4 md:px-8">
+        <h1 class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6">ファイルの概要</h1>
+
+        <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
+          ファイル名: <?=$FileName?><br>
+          ファイルサイズ: <?=$FileSize?><br>
+          ハッシュ(SHA256): <?=$FileHash?><br>
+          アップロード日時: <?=date("Y/m/d - M (D) H:i:s", FileInfo["UploadDate"])?>
+        </p>
+
+        <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">ファイルをダウンロード</h2>
+
+        <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
+        
+          <?php if ( defined( "DownloadBlocked" ) ) { ?>
+            <p><?=DownloadBlocked?></p>
+          <?php } else { ?>
+            <p>u r able 2download.</p>
+            <?php if ( defined( "DataEncrypted" ) ) { ?>
+              <p>btw, maybe file is encrypted.. enter the pwd plz!</p>
+            <?php } ?>
+          <?php } ?>
+
+        </p>
+
+      </div>
     </div>
 
     <?php require_once("../scripts/footer.php"); ?>
