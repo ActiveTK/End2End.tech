@@ -30,7 +30,15 @@
 
         <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4"></h1>
         <p class="mb-6 sm:text-lg md:mb-8">
-          
+          <form action="" enctype="multipart/form-data" method="post">
+            <input type="text" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" name="title" maxlength="120" placeholder="ここにタイトルを入力してください(120文字まで)" required>
+            <br>
+            <input type="email" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" name="email" maxlength="120" placeholder="メールアドレスを入力して下さい" required>
+            <br>
+            <textarea name="data" maxlength="1080" placeholder="ここに内容を入力してください(1080文字まで)" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" required></textarea>
+            <br>
+            <input type="submit" value="送信" style="width:73px;height:33px;background-color:#90ee90;">
+          </form>
         </p>
 
       </div>
