@@ -23,6 +23,11 @@
       define( "FileInfo", $Note );
 
       if ( $_GET["password"] == FileInfo["DeletePassword"] ) {
+
+        $stmt = $dbh->prepare( 'delete from UploadFiles where FileID = ?;' );
+        $stmt->execute( [FileInfo["FileID"]] );
+        unlink( $basepath . FileInfo["FileID"] );
+
         exit( json_encode( array( "Status"=>"OK", "Message"=>"ファイルの削除に成功しました。" ), JSON_UNESCAPED_UNICODE ) );
       }
       else {
