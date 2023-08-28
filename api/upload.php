@@ -3,7 +3,7 @@
   header( "Content-Type: application/json" );
   header( "X-Robots-Tag: noindex,nofollow,noarchive" );
 
-  $basepath = "../objects/blob/";
+  $basepath = "../../objects/blob/";
 
   // ランダムな英数字を取得する関数
   function GetRand( int $len = 32 ) {
@@ -22,13 +22,13 @@
 
     $Size = filesize( $_FILES['file']['tmp_name'] );
     if( $Size > 1024 * 1024 * 100 )
-      die( json_encode( array( "Error"=>"エラー: ファイルサイズが100MBを超えています。(ERR_FILE_TOO_BIG)" ) ) );
+      die( json_encode( array( "Error"=>"エラー: ファイルサイズが100MBを超えています。(ERR_FILE_TOO_BIG)" ), JSON_UNESCAPED_UNICODE ) );
     
     $FileID = substr( hash_file( 'md5', $_FILES['file']['tmp_name'] ), 0, 4 ) . dechex(time());
     $RemovePassword = GetRand( 8 );
 
     if ( file_exists( "{$basepath}{$FileID}" ) )
-      die( json_encode( array( "Error"=>"エラー: このファイルは他の方によって既にアップロードされています。(ERR_FILE_EXISTS)" ) ) );
+      die( json_encode( array( "Error"=>"エラー: このファイルは他の方によって既にアップロードされています。(ERR_FILE_EXISTS)" ), JSON_UNESCAPED_UNICODE ) );
 
     $Hash = hash_file( 'sha256', $_FILES['file']['tmp_name'] );
 
@@ -36,7 +36,7 @@
     if ( isset( $_POST["setLimitDownload"] ) && isset( $_POST["maxDownloadCount"] ) ) {
 
       if ( !is_numeric( $_POST["maxDownloadCount"] ) || $_POST["maxDownloadCount"] * 1 < 0 )
-        die( json_encode( array( "Error"=>"エラー: 最大ダウンロード回数には、非負整数のみ指定できます。" ) ) );
+        die( json_encode( array( "Error"=>"エラー: 最大ダウンロード回数には、非負整数のみ指定できます。" ), JSON_UNESCAPED_UNICODE ) );
 
       $DownloadLimit = $_POST["maxDownloadCount"];
 
@@ -81,8 +81,9 @@
         $BlockVPN,
         $RemovePassword
       ] );
+
     } catch (\Throwable $e) {
-      die( json_encode( array( "Error"=>"エラー: アップロードの処理に失敗しました。(ERR_SQL_FAILED)" ) ) );
+      die( json_encode( array( "Error"=>"エラー: アップロードの処理に失敗しました。(ERR_SQL_FAILED)" ), JSON_UNESCAPED_UNICODE ) );
     }
 
     file_put_contents(
@@ -107,4 +108,4 @@
 
   }
 
-  die( json_encode( array( "Error"=>"エラー: アップロードに失敗しました。(ERR_FILE_NOTSELECTED)" ) ) );
+  die( json_encode( array( "Error"=>"エラー: アップロードに失敗しました。(ERR_FILE_NOTSELECTED)" ), JSON_UNESCAPED_UNICODE ) );
