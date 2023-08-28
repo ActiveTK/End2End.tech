@@ -104,11 +104,14 @@
             <?=DownloadBlocked?>
           <?php } else { ?>
             <?php if ( defined( "DataEncrypted" ) ) { ?>
-              ファイルはE2E暗号化されており、複合化にはパスワードが必要です。<br>
-              パスワード:
-               <input type="text" id="password" placeholder="p@ssword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              ファイルはEnd-to-End暗号化されており、複合化にはパスワードが必要です。
+              <div class="flex">
+                <input type="text" id="password" placeholder="複合化パスワード" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <input type="button" id="downloadData" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" value="ファイルをダウンロード">
+              </div>
+            <?php } else { ?>
+              <input type="button" id="downloadData" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" value="ファイルをダウンロード">
             <?php } ?>
-            <input type="button" id="downloadData" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" value="ファイルをダウンロード">
           <?php } ?>
 
           <br>
@@ -118,10 +121,10 @@
 
         <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">【ファイルを削除】</h1>
         <p class="mb-6 sm:text-lg md:mb-8">
-          サーバーからファイルを完全に削除できます。<br>
+          サーバーからファイルを完全に削除できます。
           <div class="flex">
-              <input type="text" id="remove-password" placeholder="削除用パスワード" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <button class="bg-gray-700 hover:bg-gray-600 text-white rounded px-4 py-2" id="removefile">ファイルを削除</button><br>
+            <input type="text" id="remove-password" placeholder="削除用パスワード" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <button class="bg-gray-700 hover:bg-gray-600 text-white rounded px-4 py-2" id="removefile">ファイルを削除</button><br>
           </div>
           <span id="statRemove"></span>
         </p>

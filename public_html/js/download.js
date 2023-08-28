@@ -9,17 +9,85 @@
 
         _("main").style.display = "block";
 
-        if (window.end2endtech.Encrypted === true) {
-
-		}
-
 		_("downloadData").onclick = function () {
 			if (window.end2endtech.Encrypted === true) {
-				DownloadFile(window.end2endtech.FileID, function (result) {
+
+				if (window.decryptionarray) {
 					_("stat").innerText = "ファイルを複合化しています..。";
-					DownloadFileFromBlob(new Blob([result], { "type": "application/force-download" }), window.end2endtech.FileName);
-					_("stat").innerText = "";
-				});
+
+					var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
+					var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
+					try {
+						DownloadFileFromBlob(
+							new Blob(
+								[
+									CryptoJS.AES.decrypt(
+										{
+											"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
+										},
+										CryptoJS.PBKDF2(
+											CryptoJS.enc.Utf8.parse(_("password").value),
+											salt,
+											{
+												keySize: 128 / 8,
+												iterations: 500
+											}
+										),
+										{
+											iv: iv,
+											mode: CryptoJS.mode.CBC,
+											padding: CryptoJS.pad.Pkcs7
+										}).toString(CryptoJS.enc.Utf8)
+								],
+								{ "type": "application/force-download" }
+							), window.end2endtech.FileName
+						);
+
+						_("stat").innerText = "";
+					} catch (e) {
+						_("stat").innerText = "複合化に失敗しました: " + e.Message;
+					}
+				}
+				else {
+					DownloadFile(window.end2endtech.FileID, function (result) {
+						_("stat").innerText = "ファイルを複合化しています..。";
+
+						window.decryptionarray = result.split(',');
+						var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
+						var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
+
+						try {
+							DownloadFileFromBlob(
+								new Blob(
+									[
+										CryptoJS.AES.decrypt(
+											{
+												"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
+											},
+											CryptoJS.PBKDF2(
+												CryptoJS.enc.Utf8.parse(_("password").value),
+												salt,
+												{
+													keySize: 128 / 8,
+													iterations: 500
+												}
+											),
+											{
+												iv: iv,
+												mode: CryptoJS.mode.CBC,
+												padding: CryptoJS.pad.Pkcs7
+											}).toString(CryptoJS.enc.Utf8)
+									],
+									{ "type": "application/force-download" }
+								), window.end2endtech.FileName
+							);
+
+							_("stat").innerText = "";
+						} catch (e) {
+							_("stat").innerText = "複合化に失敗しました: " + e.Message;
+						}
+					});
+				}
 			}
 			else {
 				DownloadFile(window.end2endtech.FileID, function (result) {
@@ -81,5 +149,9 @@
 			URL.revokeObjectURL(window.dataurl);
 		}, 20000);
 	}
+
+	function TryDecrypt(result) {
+
+    }
 
 }(window));
