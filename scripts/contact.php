@@ -8,7 +8,7 @@
     <meta name="robots" content="All">
     <meta name="description" content="お問い合わせフォームです。">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/js/download.js"></script>
+    <script src="/js/min.js"></script>
     <link href="/css/download.css" rel="stylesheet">
   </head>
   <body>
