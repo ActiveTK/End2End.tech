@@ -12,13 +12,13 @@
             <div class="mb-4 font-bold uppercase tracking-widest text-gray-100">Sitemap</div>
             <nav class="flex flex-col gap-4">
               <div>
+                <a href="/" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">ホーム</a>
+              </div>
+              <div>
                 <a href="/about" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">サイト概要</a>
               </div>
               <div>
                 <a href="/license" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">利用規約</a>
-              </div>
-              <div>
-                <a href="/contact" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">お問い合わせ</a>
               </div>
             </nav>
           </div>
@@ -42,10 +42,10 @@
             <div class="mb-4 font-bold uppercase tracking-widest text-gray-100">et cetera</div>
             <nav class="flex flex-col gap-4">
               <div>
-                <a href="/donate" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">寄付する</a>
+                <a href="/contact" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">お問い合わせ</a>
               </div>
               <div>
-                <a href="https://github.com/ActiveTK/End2End.tech/blob/main/LICENSE" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">The MIT License</a>
+                <a href="/donate" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">寄付</a>
               </div>
               <div>
                 <a href="/sitemap.xml" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">sitemap.xml</a>
