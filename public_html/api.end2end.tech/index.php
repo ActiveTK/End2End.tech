@@ -42,7 +42,8 @@
     exit();
   }
   else {
-    
+    require_once( "../../api/docs.php" );
+    exit();
   }
 
   // ファイルが存在しない場合
