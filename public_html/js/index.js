@@ -102,15 +102,11 @@
 
                     enc = "";
 
-                    setTimeout(function () {
-                        sendFile(new FormData($("#uploader").get(0)));
-                    }, 10);
+                    sendFile(new FormData($("#uploader").get(0)));
                 };
             }
             else {
-                setTimeout(function () {
-                    sendFile(new FormData($("#uploader").get(0)));
-                }, 10);
+              sendFile(new FormData($("#uploader").get(0)));
             }
 
             return false;
