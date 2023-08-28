@@ -55,7 +55,7 @@
               最大ダウンロード回数を設定する<br>
               <span id="setLimitDownloadInput" class="default-remove">
                 最大ダウンロード回数(0で無制限):
-                <input name="maxDownloadCount" type="number" class="maxDownloadCount border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition focus:ring" value="0" />
+                <input name="maxDownloadCount" id="maxDownloadCount" type="number" class="maxDownloadCount border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition focus:ring" value="0" />
               </span>
             </div>
             <br>
