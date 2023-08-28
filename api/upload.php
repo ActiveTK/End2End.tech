@@ -58,6 +58,8 @@
     }
 
     try {
+
+      $dbh = new PDO( DSN, DB_USER, DB_PASS );
       $stmt = $dbh->prepare(
         "insert into UploadFiles(
           FileID, FileName, FileSize, FileHash, DownloadCount, UploadDate, FileDownloadLimit, FileValidDateLimit, EndtoEndEncrypted, BlockVPN, DeletePassword
@@ -80,7 +82,7 @@
         $RemovePassword
       ] );
     } catch (\Throwable $e) {
-      die( json_encode( array( "Error"=>"エラー: アップロードの処理に失敗しました。(ERR_MKDIR_FALSE)" ) ) );
+      die( json_encode( array( "Error"=>"エラー: アップロードの処理に失敗しました。(ERR_SQL_FAILED)" ) ) );
     }
 
     file_put_contents(
