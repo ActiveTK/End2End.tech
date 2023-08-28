@@ -148,8 +148,18 @@
                     if (!_("setDateLimit").checked)
                         _("DownloadLimit").setAttribute("name", "DownloadLimit");
                 }
-                else {
-                    window.location.href = "/" + t["FileID"];
+                else if (b == "Status" && t["Status"] == "OK") {
+                    createNewURL(t);
+
+                    _("submitData").disabled = false;
+
+                    _("password").setAttribute("name", "passwd");
+
+                    if (!_("setLimitDownload").checked)
+                        _("maxDownloadCount").setAttribute("name", "maxDownloadCount");
+
+                    if (!_("setDateLimit").checked)
+                        _("DownloadLimit").setAttribute("name", "DownloadLimit");
                 }
             }
 
@@ -168,6 +178,20 @@
 
         });
 
+    }
+
+    function createNewURLwithFileID(FileDetails) {
+
+        if (!FileDetails["FileID"])
+            return;
+
+        if (_("resultTable").classList.contains("default-remove"))
+            _("resultTable").classList.remove("default-remove");
+
+        var e = _("resultTable").tBodies[0].insertRow(-1);
+        e.insertCell(0).appendChild(document.createTextNode(FileDetails["FileID"]));
+        e.insertCell(1).appendChild(document.createTextNode(FileDetails["URL"]));
+        e.insertCell(2).appendChild(document.createTextNode(FileDetails["RemovePassword"]));
     }
 
 
