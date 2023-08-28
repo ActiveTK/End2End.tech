@@ -205,6 +205,7 @@
         var anchor = document.createElement('a');
         anchor.appendChild(document.createTextNode(FileDetails["URL"]));
         anchor.href = FileDetails["URL"];
+        anchor.target = "_blank";
         anchor.className = "px-6 py-3";
         e.insertCell(1).appendChild(anchor);
 
