@@ -83,6 +83,29 @@
         <li>setDateLimit: onに設定すると、ファイルのダウンロード期限を設定できます。DownloadLimitと組み合わせて使用して下さい。</li>
         <li>DownloadLimit: ファイルのダウンロード期限を指定できます。strtotimeで処理できる形式で指定して下さい。利用には、DownloadLimitが必須です。</li>
 
+        <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">ファイルのダウンロード</h1>
+        <p class="mb-6 sm:text-lg md:mb-8">
+          ファイルをダウンロードするには、以下のURLにGETリクエストを送信して下さい。
+        </p>
+
+        <pre class="line-numbers"><code class="language-Bash">curl https://api.end2end.tech/download?id={ファイルID} -o {出力先ファイル名}</code></pre>
+
+        <p class="mb-6 sm:text-lg md:mb-8">
+          ただし、{ファイルID}にはアップロード時のFileIDを指定し、{出力先ファイル名}の指定は任意です。
+        </p>
+
+        <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">ファイルの削除</h1>
+        <p class="mb-6 sm:text-lg md:mb-8">
+          ファイルを削除するには、以下のURLにGETリクエストを送信して下さい。
+        </p>
+
+        <pre class="line-numbers"><code class="language-Bash">curl https://api.end2end.tech/delete?id={ファイルID}&password={削除用パスワード}</code></pre>
+
+        <p class="mb-6 sm:text-lg md:mb-8">
+          ただし、{ファイルID}にはアップロード時のFileIDを指定し、{削除用パスワード}にはアップロード時のRemovePasswordを指定して下さい。<br>
+          この操作は取り消せず、ディスク及びデータベースから完全にファイルが消去されますので、注意して下さい。
+        </p>
+
       </div>
     </div>
 
