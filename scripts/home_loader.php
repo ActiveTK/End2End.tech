@@ -81,10 +81,11 @@
           <p id="stat"></p>
         </div>
         <div align="center">
-          <table class="table-auto default-remove" id="resultTable">
-            <thead>
+          <br>
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 default-remove" id="resultTable">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th>ファイルID</th>
+                <th>ファイル名</th>
                 <th>URL</th>
                 <th>削除パスワード</th>
               </tr>

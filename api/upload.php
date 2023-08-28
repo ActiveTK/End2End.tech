@@ -57,6 +57,8 @@
         $DateLimit = @strtotime( $_POST["DownloadLimit"] );
     }
 
+    $FileName = $_FILES['file']['name'];
+
     try {
 
       $dbh = new PDO( DSN, DB_USER, DB_PASS );
@@ -70,7 +72,7 @@
       );
       $stmt->execute( [
         $FileID,
-        $_FILES['file']['name'],
+        $FileName,
         $Size,
         $Hash,
         "0",
@@ -99,6 +101,7 @@
             array(
                 "Status" => "OK",
                 "FileID" => $FileID,
+                "FileName" => basename( $FileName ),
                 "URL" => "https://end2end.tech/" . $FileID,
                 "SHA256" => $Hash,
                 "RemovePassword" => $RemovePassword
