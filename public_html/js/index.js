@@ -97,14 +97,12 @@
                     _("file").files = list.files;
 
                     enc = "";
-
-                    sendFile(new FormData($("#uploader").get(0)));
                 };
             }
-            else
-            {
+
+            setTimeout(function () {
                 sendFile(new FormData($("#uploader").get(0)));
-            }
+            }, 10);
 
             return false;
         }
