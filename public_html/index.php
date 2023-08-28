@@ -118,6 +118,11 @@
     readfile( "../lib/pswmeter.js" );
     exit();
   }
+  else if ( request_path == "js/aes.js" ) {
+    header( "Content-Type: text/javascript" );
+    readfile( "../lib/CryptoJS/components/aes.js" );
+    exit();
+  }
 
   // ファイルが存在しない場合
   header( "HTTP/1.1 404 Not Found" );

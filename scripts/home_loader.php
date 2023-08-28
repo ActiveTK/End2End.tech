@@ -10,8 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/js/pswmeter.js"></script>
     <script src="https://code.activetk.jp/ActiveTK.min.js"></script>
-    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
-    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/pbkdf2.js"></script>
+    <script src="/js/aes.js"></script>
     <script src="/js/index.js"></script>
     <link href="/css/index.css" rel="stylesheet">
   </head>
