@@ -127,6 +127,25 @@
     exit();
   }
 
-  // ファイルが存在しない場合
-  header( "HTTP/1.1 404 Not Found" );
-  die( "HTTP 404 - Not Found" );
+  // 指定されたファイルIDが存在するか確認
+  $Note = array();
+  $dbh = new PDO( DSN, DB_USER, DB_PASS );
+  try {
+    $stmt = $dbh->prepare( 'select * from UploadFiles where FileID = ?;' );
+    $stmt->execute( [request_path] );
+    $resd = $stmt->fetch( PDO::FETCH_ASSOC );
+    if ($resd !== false)
+      $Note = $resd;
+    else
+    {
+      // ファイルが存在しない場合
+      header( "HTTP/1.1 404 Not Found" );
+      die( "HTTP 404 - Not Found" );
+    }
+    unset($resd);
+  } catch (\Throwable $e) {
+    die("SQLエラーが発生しました。");
+  }
+  
+  define( "FileInfo", $Note );
+  require_once( "../scripts/download-loader.php" );

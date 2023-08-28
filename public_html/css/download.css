@@ -1,0 +1,25 @@
+/*!
+ * download.css - End2End.tech
+ */
+
+body {
+    color: #00bb00;
+    background-color: #000000;
+}
+
+.main {
+    display: none;
+}
+
+.default-remove {
+    display: none;
+}
+
+.textblack {
+    color: #000000;
+}
+
+
+.textcenter {
+    text-align: center;
+}
