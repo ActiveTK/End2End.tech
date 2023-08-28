@@ -189,11 +189,17 @@
             _("resultTable").classList.remove("default-remove");
 
         var e = _("resultTable").tBodies[0].insertRow(-1);
+
         var filename = document.createTextNode(FileDetails["FileName"]);
         filename.class = "px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white";
         e.class = "bg-white border-b dark:bg-gray-800 dark:border-gray-700";
         e.insertCell(0).appendChild(filename);
-        e.insertCell(1).appendChild(document.createTextNode(FileDetails["URL"]));
+
+        var anchor = document.createElement('a');
+        anchor.appendChild(document.createTextNode(FileDetails["URL"]));
+        anchor.href = FileDetails["URL"];
+        e.insertCell(1).appendChild(anchor);
+
         e.insertCell(2).appendChild(document.createTextNode(FileDetails["RemovePassword"]));
     }
 
