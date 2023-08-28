@@ -8,7 +8,6 @@
 
   // 必須ヘッダーの出力
   header( "X-Frame-Options: deny" );
-  header( "Access-Control-Allow-Origin:" );
   header( "Strict-Transport-Security: max-age=63072000; preload" );
   header( "X-XSS-Protection: 1; mode=block" );
   header( "X-Content-Type-Options: nosniff" );
@@ -25,6 +24,7 @@
     exit( "API Docs" );
   }
   else if ( request_path == "upload" ) {
+    header( "Access-Control-Allow-Origin: *" );
     require_once( "../api/upload.php" );
     exit();
   }
