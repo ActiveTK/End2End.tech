@@ -39,7 +39,7 @@
             e.preventDefault();
             var files = e.dataTransfer.files;
             if (files.length > 1)
-               return alert('ìØéûÇ…ÉAÉbÉvÉçÅ[ÉhÇ≈Ç´ÇÈÉtÉ@ÉCÉãÇÕ1Ç¬Ç‹Ç≈Ç≈Ç∑ÅB');
+               return alert('„Éï„Ç°„Ç§„É´„ÅØ‰∏Ä„Å§„Åæ„ÅßÈÅ∏Êäû„Åß„Åç„Åæ„Åô„ÄÇ');
             _("file").files = files;
         }, false);
         _("uploadzone").addEventListener('dragover', function (e) {
@@ -52,30 +52,51 @@
 
         _("uploader").onsubmit = function () {
 
+            if (_("file").files.length != 1)
+                return alert('„Éï„Ç°„Ç§„É´„ÇíÈÅ∏Êäû„Åó„Å¶‰∏ã„Åï„ÅÑ„ÄÇ');
+
+            _("stat").innerText = "„Éï„Ç°„Ç§„É´„ÇíÈÄÅ‰ø°‰∏≠..„ÄÇ";
+
             if (_("setPassword").checked) {
                 let reader = new FileReader();
                 reader.readAsBinaryString(_("file").files[0], 'UTF-8');
                 reader.onload = () => {
-                    var secret_passphrase = CryptoJS.enc.Utf8.parse( _("password").value );
+                    _("stat").innerText = "„Éá„Éº„Çø„ÇíÊöóÂè∑Âåñ„Åó„Å¶„ÅÑ„Åæ„Åô..„ÄÇ";
                     var salt = CryptoJS.lib.WordArray.random(128 / 8);
-                    var key128Bits500Iterations =
-                        CryptoJS.PBKDF2(secret_passphrase, salt, { keySize: 128 / 8, iterations: 500 });
                     var iv = CryptoJS.lib.WordArray.random(128 / 8);
-                    var options = { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 };
-                    var message_text = CryptoJS.enc.Utf8.parse(reader.result);
-                    var encrypted = CryptoJS.AES.encrypt(message_text, key128Bits500Iterations, options);
-
-                    var binary_data = CryptoJS.enc.Hex.stringify(salt) + ',' + CryptoJS.enc.Hex.stringify(iv) + ',' + encrypted;
-                    console.log(binary_data);
+                    var enc = CryptoJS.enc.Hex.stringify(salt) + ',' + CryptoJS.enc.Hex.stringify(iv) + ',' +
+                        CryptoJS.AES.encrypt(
+                            CryptoJS.enc.Utf8.parse(reader.result),
+                            CryptoJS.PBKDF2(
+                                CryptoJS.enc.Utf8.parse(_("password").value),
+                                salt,
+                                {
+                                    keySize: 128 / 8,
+                                    iterations: 500
+                                }
+                            ),
+                            {
+                                iv: iv,
+                                mode: CryptoJS.mode.CBC,
+                                padding: CryptoJS.pad.Pkcs7
+                            }
+                        );
+                    console.log(enc);
                     _("password").removeAttribute("name");
 
-                    _("files").files = [new Blob([binary_data], { type: "application/encrypted-for-end2end" })];
+                    let list = new DataTransfer();
+                    let file = new File([enc], _("file").files[0].name);
+                    list.items.add(file);
+                    _("file").files = list.files;
 
                     sendFile(new FormData($("#uploader").get(0)));
                 };
             }
             else
+            {
+                _("password").removeAttribute("name");
                 sendFile(new FormData($("#uploader").get(0)));
+            }
 
             return false;
         }
@@ -89,7 +110,7 @@
                 var xhr = new window.XMLHttpRequest();
                 xhr.upload.addEventListener("progress", function (evt) {
                     if (evt.lengthComputable)
-                        _("stat").innerText = "ëóêMíÜÅBÅB(" + (evt.loaded / evt.total * 100).toFixed(2) + "%äÆóπ)";
+                        _("stat").innerText = "   M   B B(" + (evt.loaded / evt.total * 100).toFixed(2) + "%    )";
                 }, false);
                 return xhr;
             },
@@ -108,13 +129,13 @@
                     _("stat").innerText = t[b];
                 }
                 else {
-                    window.location.href = "file?q=" + t["hash"];
+                    window.location.href = "/" + ["hash"];
                 }
             }
 
         }).fail(function (t, e, o) {
 
-            _("stat").innerText = "ëóêMÇ…é∏îsÇµÇ‹ÇµÇΩÅBè⁄ç◊:" + o;
+            _("stat").innerText = "ÈÄÅ‰ø°‰∏≠„Å´„Ç®„É©„Éº„ÅåÁô∫Áîü„Åó„Åæ„Åó„Åü:" + o;
 
         });
 
