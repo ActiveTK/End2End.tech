@@ -56,7 +56,15 @@
                 return alert('ファイルを選択して下さい。');
 
             _("submitData").disabled = true;
-            _("stat").innerText = "ファイルを送信中..。";
+            _("stat").innerText = "ファイルをアップロードしています..。";
+
+            _("password").removeAttribute("name");
+
+            if (!_("setLimitDownload").checked)
+                _("maxDownloadCount").removeAttribute("name");
+
+            if (!_("setDateLimit").checked)
+                _("DownloadLimit").removeAttribute("name");
 
             if (_("setPassword").checked) {
                 let reader = new FileReader();
@@ -82,7 +90,6 @@
                                 padding: CryptoJS.pad.Pkcs7
                             }
                         );
-                    _("password").removeAttribute("name");
 
                     let list = new DataTransfer();
                     let file = new File([enc], _("file").files[0].name);
@@ -96,7 +103,6 @@
             }
             else
             {
-                _("password").removeAttribute("name");
                 sendFile(new FormData($("#uploader").get(0)));
             }
 
@@ -127,20 +133,36 @@
         }).done(function (t) {
 
             for (let b in t) {
-                if (b == "error") {
-                    _("stat").innerText = t[b];
+                if (b == "Error") {
+                    _("stat").innerText = t["Error"];
+
+                    _("submitData").disabled = false;
+
+                    _("password").setAttribute("name", "passwd");
+
+                    if (!_("setLimitDownload").checked)
+                        _("maxDownloadCount").setAttribute("name", "maxDownloadCount");
+
+                    if (!_("setDateLimit").checked)
+                        _("DownloadLimit").setAttribute("name", "DownloadLimit");
                 }
                 else {
-                    window.location.href = "/" + ["hash"];
+                    window.location.href = "/" + t["FileID"];
                 }
             }
-
-            _("submitData").disabled = false;
 
         }).fail(function (t, e, o) {
 
             _("stat").innerText = "送信中にエラーが発生しました:" + o;
             _("submitData").disabled = false;
+
+            _("password").setAttribute("name", "passwd");
+
+            if (!_("setLimitDownload").checked)
+                _("maxDownloadCount").setAttribute("name", "maxDownloadCount");
+
+            if (!_("setDateLimit").checked)
+                _("DownloadLimit").setAttribute("name", "DownloadLimit");
 
         });
 
