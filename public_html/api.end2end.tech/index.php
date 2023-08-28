@@ -25,7 +25,7 @@
   }
   else if ( request_path == "upload" ) {
     header( "Access-Control-Allow-Origin: *" );
-    require_once( "../api/upload.php" );
+    require_once( "../../api/upload.php" );
     exit();
   }
 
