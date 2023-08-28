@@ -93,7 +93,7 @@
               <div>
                 <h3 class="mb-2 text-lg font-semibold md:text-xl">End2End.tech API</h3>
                 <p class="mb-2 text-gray-500">専用のAPIを用いて外部からファイルをアップロードすることができます。</p>
-                <a href="https://api.activetk.jp" class="font-bold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">詳細</a>
+                <a href="https://api.end2end.tech/" class="font-bold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">詳細</a>
               </div>
             </div>
 
