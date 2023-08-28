@@ -19,6 +19,9 @@
   // ex: (GET /hoge/index.php HTTP/1.1) => request_path === "hoge/index.php"
   define( "request_path", ( isset( $_GET["request"] ) && is_string( $_GET["request"] ) ) ? strtolower( $_GET["request"] ) : "" );
 
+  // MySQLの設定取得
+  require_once( "/home/activetk3/Config.php" );
+
   // ホーム
   if ( empty( request_path ) ) {
     exit( "API Docs" );

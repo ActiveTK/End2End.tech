@@ -92,6 +92,9 @@
   // 出力したバッファーを自動で圧縮するように設定
   ob_start( "sanitize_output" );
 
+  // MySQLの設定取得
+  require_once( "/home/activetk3/Config.php" );
+
   // ホーム
   if ( empty( request_path ) ) {
     require_once( "../scripts/home_loader.php" );
