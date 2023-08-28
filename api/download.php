@@ -25,7 +25,7 @@
       define( "FileInfo", $Note );
 
       if ( !empty( FileInfo["FileDownloadLimit"] ) && FileInfo["FileDownloadLimit"] * 1 != 0 ) {
-        if ( FileInfo["FileDownloadLimit"] * 1 <= FileInfo["DownloadCount"] * 1 + 1 )
+        if ( FileInfo["FileDownloadLimit"] * 1 <= FileInfo["DownloadCount"] * 1 )
           die( "アップロードしたユーザーが設定したファイルのダウンロード制限回数を超えたため、ファイルは無効となりました。" );
       }
       if ( !empty( FileInfo["FileValidDateLimit"] ) ) {
