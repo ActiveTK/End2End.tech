@@ -55,6 +55,7 @@
             if (_("file").files.length != 1)
                 return alert('ファイルを選択して下さい。');
 
+            _("submitData").disabled = true;
             _("stat").innerText = "ファイルを送信中..。";
 
             if (_("setPassword").checked) {
@@ -135,9 +136,12 @@
                 }
             }
 
+            _("submitData").disabled = false;
+
         }).fail(function (t, e, o) {
 
             _("stat").innerText = "送信中にエラーが発生しました:" + o;
+            _("submitData").disabled = false;
 
         });
 
