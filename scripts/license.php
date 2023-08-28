@@ -8,8 +8,8 @@
     <meta name="robots" content="All">
     <meta name="description" content="利用規約です。">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/js/index.js"></script>
-    <link href="/css/index.css" rel="stylesheet">
+    <script src="/js/min.js"></script>
+    <link href="/css/download.css" rel="stylesheet">
   </head>
   <body>
 
