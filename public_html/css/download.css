@@ -19,7 +19,11 @@ body {
     color: #000000;
 }
 
-
 .textcenter {
     text-align: center;
 }
+
+.textwhite {
+    color: #ffffff;
+}
+
