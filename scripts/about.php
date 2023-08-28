@@ -27,7 +27,7 @@
 
     <div id="main" class="main py-6 sm:py-8 lg:py-12">
       
-      <div class="bg-gray-300 py-6 sm:py-8 lg:py-12">
+      <div class="textblack bg-gray-300 py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
           <div class="mb-10 md:mb-16">
