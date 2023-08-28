@@ -7,7 +7,7 @@
 
     document.addEventListener("DOMContentLoaded", function () {
 
-        _("main").style.display = "block";
+        document.getElementById("main").style.display = "block";
 
     });
 
