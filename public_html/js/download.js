@@ -27,6 +27,26 @@
 					_("stat").innerText = "";
 				});
 			}
+		}
+
+		_("removefile").onclick = function () {
+			if (!_("remove-password").value)
+				return alert("削除用パスワードを入力して下さい。");
+			if (!window.confirm("本当にファイルを削除しますか？\nファイルはサーバー上から完全に削除され、永久にアクセスできなくなります。"))
+				return;
+
+			var xhr = new XMLHttpRequest
+			xhr.open('GET', 'https://api.end2end.tech/remove?id=' + window.end2endtech.FileID + "&password=" + atk.encode(_("remove-password").value));
+			xhr.responseType = 'json';
+			xhr.onreadystatechange = function (evt) {
+				if (xhr.readyState === 4) {
+					if (xhr.status === 200) {
+						_("statRemove").innerText = xhr.response.Message ? xhr.response.Message : xhr.response.Error;
+					}
+				}
+			}
+			xhr.send();
+
         }
 
     });

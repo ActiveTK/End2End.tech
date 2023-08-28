@@ -36,6 +36,11 @@
     require_once( "../../api/download.php" );
     exit();
   }
+  else if ( request_path == "delete" ) {
+    header( "Access-Control-Allow-Origin: *" );
+    require_once( "../../api/delete.php" );
+    exit();
+  }
   else {
     
   }

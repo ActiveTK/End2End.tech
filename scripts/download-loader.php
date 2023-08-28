@@ -90,7 +90,6 @@
 
       <div class="mx-auto max-w-screen-md px-4 md:px-8">
         <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">【ファイルの概要】</h1>
-
         <p class="mb-6 sm:text-lg md:mb-8">
           ファイル名: <?=$FileName?><br>
           ファイルサイズ: <?=$FileSize?><br>
@@ -99,7 +98,6 @@
         </p>
 
         <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">【ファイルをダウンロード】</h2>
-
         <p class="mb-6 sm:text-lg md:mb-8">
         
           <?php if ( defined( "DownloadBlocked" ) ) { ?>
@@ -108,7 +106,7 @@
             <?php if ( defined( "DataEncrypted" ) ) { ?>
               ファイルはE2E暗号化されており、複合化にはパスワードが必要です。<br>
               パスワード:
-               <input id="password" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" /><br>
+               <input id="password" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" /><br><br>
             <?php } ?>
             <input type="button" id="downloadData" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" value="ファイルをダウンロード">
           <?php } ?>
@@ -116,6 +114,15 @@
           <br>
           <span id="stat"></span>
 
+        </p>
+
+        <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">【ファイルを削除】</h1>
+        <p class="mb-6 sm:text-lg md:mb-8">
+          削除用パスワードを入力すると、サーバーからファイルを完全に削除できます。<br>
+          削除用パスワード:
+            <input id="remove-password" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="p@ssword" /><br>
+            <input type="button" id="removefile" value="ファイルを削除"><br>
+          <span id="statRemove"></span>
         </p>
 
       </div>
