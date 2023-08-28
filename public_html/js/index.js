@@ -113,7 +113,7 @@
                 var xhr = new window.XMLHttpRequest();
                 xhr.upload.addEventListener("progress", function (evt) {
                     if (evt.lengthComputable)
-                        _("stat").innerText = "   M   B B(" + (evt.loaded / evt.total * 100).toFixed(2) + "%    )";
+                        _("stat").innerText = "送信中..(" + (evt.loaded / evt.total * 100).toFixed(2) + "%完了)";
                 }, false);
                 return xhr;
             },
