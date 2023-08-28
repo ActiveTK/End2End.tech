@@ -43,6 +43,8 @@
   -X POST
   -F file=@/fakepath/helloworld.png</code></pre>
 
+        <br>
+
         <p class="mb-6 sm:text-lg md:mb-8">
           レスポンスは以下のようになります。
         </p>
@@ -62,6 +64,8 @@
   "Error": "エラーの詳細メッセージ"
 }</code></pre>
 
+        <br>
+
         <p class="mb-6 sm:text-lg md:mb-8">
           また、以下のようにリクエストにオプションを付属させることもできます。
         </p>
@@ -72,6 +76,8 @@
   -F 'setLimitDownload=on'
   -F 'maxDownloadCount=100'
   -F 'blockVPN=on'</code></pre>
+
+        <br>
 
         <p class="mb-6 sm:text-lg md:mb-8">
           現在、対応しているオプションは以下の通りです。
@@ -90,6 +96,8 @@
 
         <pre class="line-numbers"><code class="language-Bash">curl https://api.end2end.tech/download?id={ファイルID} -o {出力先ファイル名}</code></pre>
 
+        <br>
+
         <p class="mb-6 sm:text-lg md:mb-8">
           ただし、{ファイルID}にはアップロード時のFileIDを指定し、{出力先ファイル名}の指定は任意です。
         </p>
@@ -100,6 +108,8 @@
         </p>
 
         <pre class="line-numbers"><code class="language-Bash">curl https://api.end2end.tech/delete?id={ファイルID}&password={削除用パスワード}</code></pre>
+
+        <br>
 
         <p class="mb-6 sm:text-lg md:mb-8">
           ただし、{ファイルID}にはアップロード時のFileIDを指定し、{削除用パスワード}にはアップロード時のRemovePasswordを指定して下さい。<br>
