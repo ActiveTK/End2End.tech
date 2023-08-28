@@ -64,7 +64,7 @@
               ダウンロード期限を設定する<br>
               <span id="setDateLimitInput" class="default-remove">
                 ダウンロード期限(JST):
-                <input type="datetime-local" id="DownloadLimit" name="DownloadLimit" step="300">
+                <input type="datetime-local" id="DownloadLimit" name="DownloadLimit">
               </span>
             </div>
             <br>
