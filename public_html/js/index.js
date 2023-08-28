@@ -149,6 +149,13 @@
                         _("DownloadLimit").setAttribute("name", "DownloadLimit");
                 }
                 else if (b == "Status" && t["Status"] == "OK") {
+                    _("stat").innerText = "";
+
+                    try {
+                        _("file").value = "";
+                    }
+                    catch { }
+
                     createNewURL(t);
 
                     _("submitData").disabled = false;
