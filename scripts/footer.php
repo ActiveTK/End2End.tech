@@ -12,13 +12,13 @@
             <div class="mb-4 font-bold uppercase tracking-widest text-gray-100">Sitemap</div>
             <nav class="flex flex-col gap-4">
               <div>
-                <a href="/" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">ホーム</a>
+                <a href="https://end2end.tech/" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">ホーム</a>
               </div>
               <div>
-                <a href="/about" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">サイト概要</a>
+                <a href="https://end2end.tech/about" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">サイト概要</a>
               </div>
               <div>
-                <a href="/license" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">利用規約</a>
+                <a href="https://end2end.tech/license" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">利用規約</a>
               </div>
             </nav>
           </div>
@@ -42,13 +42,13 @@
             <div class="mb-4 font-bold uppercase tracking-widest text-gray-100">et cetera</div>
             <nav class="flex flex-col gap-4">
               <div>
-                <a href="/contact" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">お問い合わせ</a>
+                <a href="https://end2end.tech/contact" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">お問い合わせ</a>
               </div>
               <div>
-                <a href="/donate" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">寄付</a>
+                <a href="https://end2end.tech/donate" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">寄付</a>
               </div>
               <div>
-                <a href="/sitemap.xml" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">sitemap.xml</a>
+                <a href="https://end2end.tech/sitemap.xml" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">sitemap.xml</a>
               </div>
             </nav>
           </div>
