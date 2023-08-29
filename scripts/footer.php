@@ -27,7 +27,7 @@
             <div class="mb-4 font-bold uppercase tracking-widest text-gray-100">Development</div>
             <nav class="flex flex-col gap-4">
               <div>
-                <a href="https://github.com/ActiveTK/End2End.tech" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">Github</a>
+                <a href="https://github.com/ActiveTK/End2End.tech" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">GitHub</a>
               </div>
               <div>
                 <a href="https://api.end2end.tech/" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">API Docs</a>
