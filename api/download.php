@@ -37,10 +37,12 @@
         $headers = getallheaders();
         if ( !isset( $headers["Cf-Ipcountry"] ) || $headers["Cf-Ipcountry"] != "JP" )
           die( "アップロードしたユーザーの設定により、VPN経由のダウンロードは禁止されています。" );
-        $IP = isset( $headers["Cf-Connecting-Ip"] ) ? $headers["Cf-Connecting-Ip"] : $_SERVER["REMOTE_ADDR"];
-        $ipoc = explode(".", $IP);
-        if ( @gethostbyname( $ipoc[3] . "." . $ipoc[2] . "." . $ipoc[1] . "." . $ipoc[0] . ".dnsel.torproject.org" ) == "127.0.0.2" )
-          die( "アップロードしたユーザーの設定により、Tor経由のダウンロードは禁止されています。" );
+        else {
+          $IP = isset( $headers["Cf-Connecting-Ip"] ) ? $headers["Cf-Connecting-Ip"] : $_SERVER["REMOTE_ADDR"];
+          $ipoc = explode(".", $IP);
+          if ( @gethostbyname( $ipoc[3] . "." . $ipoc[2] . "." . $ipoc[1] . "." . $ipoc[0] . ".dnsel.torproject.org" ) == "127.0.0.2" )
+            die( "アップロードしたユーザーの設定により、Tor経由のダウンロードは禁止されています。" );
+        }
       }
 
       $Note["DownloadCount"] = $Note["DownloadCount"] + 1;
