@@ -104,7 +104,10 @@
 				return;
 
 			var xhr = new XMLHttpRequest
-			xhr.open('GET', 'https://api.end2end.tech/delete?id=' + window.end2endtech.FileID + "&password=" + atk.encode(_("remove-password").value));
+			if (window.end2endtech.EnableAPIAsSubDomain)
+				xhr.open('GET', window.end2endtech.Endpoint + 'delete?id=' + window.end2endtech.FileID + "&password=" + atk.encode(_("remove-password").value));
+			else
+				xhr.open('GET', window.end2endtech.Endpoint + 'delete&id=' + window.end2endtech.FileID + "&password=" + atk.encode(_("remove-password").value));
 			xhr.responseType = 'json';
 			xhr.onreadystatechange = function (evt) {
 				if (xhr.readyState === 4) {
@@ -121,7 +124,10 @@
 	function DownloadFile(fileid, callback) {
 
 		var xhr = new XMLHttpRequest
-		xhr.open('GET', 'https://api.end2end.tech/download?id=' + fileid);
+		if (window.end2endtech.EnableAPIAsSubDomain)
+			xhr.open('GET', window.end2endtech.Endpoint + 'download?id=' + fileid);
+		else
+			xhr.open('GET', window.end2endtech.Endpoint + 'download&id=' + fileid);
 		xhr.onprogress = function (evt) {
 			_("stat").innerText = "ダウンロード中..(" + (100 * evt.loaded / evt.total | 0) + "%完了)..。";
 		};

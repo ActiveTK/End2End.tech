@@ -68,7 +68,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.activetk.jp/ActiveTK.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
-    <script>window.end2endtech={FileID:"<?=$FileID?>",FileName:atk.decode("<?=urlencode(basename( FileInfo["FileName"] ))?>"),Encrypted:<?=(defined("DataEncrypted")?"true":"false")?>};</script>
+    <script>window.end2endtech={FileID:"<?=$FileID?>",FileName:atk.decode("<?=urlencode(basename( FileInfo["FileName"] ))?>"),Encrypted:<?=(defined("DataEncrypted")?"true":"false")?>,Endpoint:atk.decode("<?=urlencode(APIEndPoint)?>"),EnableAPIAsSubDomain:<?=EnableAPIAsSubDomain?"true":"false"?>};</script>
     <script src="/js/download.js"></script>
     <link href="/css/download.css" rel="stylesheet">
   </head>

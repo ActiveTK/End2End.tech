@@ -20,7 +20,7 @@
   define( "request_path", ( isset( $_GET["request"] ) && is_string( $_GET["request"] ) ) ? strtolower( $_GET["request"] ) : "" );
 
   // MySQLの設定取得
-  require_once( "/home/activetk3/Config.php" );
+  require_once( "/../../Config.php" );
 
   // ホーム
   if ( empty( request_path ) ) {

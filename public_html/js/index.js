@@ -125,7 +125,7 @@
                 }, false);
                 return xhr;
             },
-            url: "https://api.end2end.tech/upload",
+            url: window.end2endtec.Endpoint + "upload",
             type: "POST",
             data: Data,
             cache: !1,

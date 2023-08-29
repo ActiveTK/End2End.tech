@@ -10,7 +10,7 @@
   define( "LOAD_START_TIME", microtime( true ) );
 
   // HTTPSの自動リダイレクト処理
-  if ( empty( $_SERVER['HTTPS'] ) ) {
+  if ( EnableSSL && empty( $_SERVER['HTTPS'] ) ) {
     header( "Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}" );
     die();
   }
@@ -93,7 +93,7 @@
   ob_start( "sanitize_output" );
 
   // MySQLの設定取得
-  require_once( "/home/activetk3/Config.php" );
+  require_once( "../Config.php" );
 
   // ホーム
   if ( empty( request_path ) ) {
@@ -129,8 +129,8 @@
 
   // 指定されたファイルIDが存在するか確認
   $Note = array();
-  $dbh = new PDO( DSN, DB_USER, DB_PASS );
   try {
+    $dbh = new PDO( DSN, DB_USER, DB_PASS );
     $stmt = $dbh->prepare( 'select * from UploadFiles where FileID = ?;' );
     $stmt->execute( [request_path] );
     $resd = $stmt->fetch( PDO::FETCH_ASSOC );

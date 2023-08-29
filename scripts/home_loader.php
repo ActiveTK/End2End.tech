@@ -11,6 +11,7 @@
     <script src="/js/pswmeter.js"></script>
     <script src="https://code.activetk.jp/ActiveTK.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script>window.end2endtech={Endpoint:atk.decode("<?=urlencode(APIEndPoint)?>")};</script>
     <script src="/js/index.js"></script>
     <link href="/css/index.css" rel="stylesheet">
   </head>
