@@ -74,9 +74,9 @@
         <pre class="line-numbers"><code class="language-Bash">curl https://api.end2end.tech/upload
   -X POST
   -F file=@/fakepath/helloworld.png
-  -F 'setLimitDownload=on'
-  -F 'maxDownloadCount=100'
-  -F 'blockVPN=on'</code></pre>
+  -F setLimitDownload=on
+  -F maxDownloadCount=100
+  -F blockVPN=on</code></pre>
 
         <br>
 

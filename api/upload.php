@@ -20,8 +20,6 @@
 
   if( isset( $_FILES['file'] ) && is_uploaded_file( $_FILES['file']['tmp_name'] ) ) {
 
-    header( "DEBUG-HEADERS: " . json_encode($_POST) );
-
     $Size = filesize( $_FILES['file']['tmp_name'] );
     if( $Size > MaxUploadSize )
       die( json_encode( array( "Error"=>"エラー: ファイルサイズが" . MaxUploadSize . "バイトを超えています。(ERR_FILE_TOO_BIG)" ), JSON_UNESCAPED_UNICODE ) );
