@@ -103,6 +103,7 @@
         
           <?php if ( defined( "DownloadBlocked" ) ) { ?>
             <?=DownloadBlocked?>
+            <input type="hidden" id="downloadData">
           <?php } else { ?>
             <?php if ( defined( "DataEncrypted" ) ) { ?>
               ファイルはEnd-to-End暗号化されており、複合化にはパスワードが必要です。
