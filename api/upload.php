@@ -35,7 +35,7 @@
     $DownloadLimit = "0";
     if ( isset( $_POST["setLimitDownload"] ) && isset( $_POST["maxDownloadCount"] ) ) {
 
-      if ( !is_numeric( $_POST["maxDownloadCount"] ) || $_POST["maxDownloadCount"] * 1 < 0 )
+      if ( !is_numeric( $_POST["maxDownloadCount"] ) || $_POST["maxDownloadCount"] * 1 < 0 || !is_int( $_POST["maxDownloadCount"] * 1 ) )
         die( json_encode( array( "Error"=>"エラー: 最大ダウンロード回数には、非負整数のみ指定できます。" ), JSON_UNESCAPED_UNICODE ) );
 
       $DownloadLimit = $_POST["maxDownloadCount"];
