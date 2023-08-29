@@ -38,3 +38,7 @@ body {
 .textcenter {
     text-align: center;
 }
+
+.height40 {
+    height: 40px;
+}
