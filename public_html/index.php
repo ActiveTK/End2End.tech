@@ -9,6 +9,9 @@
   // 読み込み開始時刻を記録
   define( "LOAD_START_TIME", microtime( true ) );
 
+  // 設定取得
+  require_once( "../Config.php" );
+
   // HTTPSの自動リダイレクト処理
   if ( EnableSSL && empty( $_SERVER['HTTPS'] ) ) {
     header( "Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}" );
@@ -91,9 +94,6 @@
 
   // 出力したバッファーを自動で圧縮するように設定
   ob_start( "sanitize_output" );
-
-  // MySQLの設定取得
-  require_once( "../Config.php" );
 
   // ホーム
   if ( empty( request_path ) ) {
