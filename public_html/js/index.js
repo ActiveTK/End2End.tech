@@ -125,7 +125,7 @@
                 }, false);
                 return xhr;
             },
-            url: window.end2endtec.Endpoint + "upload",
+            url: window.end2endtech.Endpoint + "upload",
             type: "POST",
             data: Data,
             cache: !1,
