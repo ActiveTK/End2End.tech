@@ -21,8 +21,8 @@
   if( isset( $_FILES['file'] ) && is_uploaded_file( $_FILES['file']['tmp_name'] ) ) {
 
     $Size = filesize( $_FILES['file']['tmp_name'] );
-    if( $Size > 1024 * 1024 * 100 )
-      die( json_encode( array( "Error"=>"エラー: ファイルサイズが100MBを超えています。(ERR_FILE_TOO_BIG)" ), JSON_UNESCAPED_UNICODE ) );
+    if( $Size > MaxUploadSize )
+      die( json_encode( array( "Error"=>"エラー: ファイルサイズが" . MaxUploadSize . "バイトを超えています。(ERR_FILE_TOO_BIG)" ), JSON_UNESCAPED_UNICODE ) );
     
     $FileID = substr( hash_file( 'md5', $_FILES['file']['tmp_name'] ), 0, 4 ) . dechex(time());
     $RemovePassword = GetRand( 8 );
