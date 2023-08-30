@@ -71,7 +71,11 @@
 
       }
 
-    } else if ( $Ext == "txt" || $Ext == "sql" || $Ext == "php" || $Ext == "html" || $Ext == "cgi" || $Ext == "cs" || $Ext == "c" || $Ext == "py" || $Ext == "js" || $Ext == "json" ) {
+    } else if (
+        $Ext == "txt" || $Ext == "sql" || $Ext == "php" || $Ext == "html" ||
+        $Ext == "cgi" || $Ext == "cs" || $Ext == "c" || $Ext == "py" ||
+        $Ext == "js" || $Ext == "json" || $Ext == "css" || $Ext == "csv" ||
+        $Ext == "rs" || $Ext == "cpp" ) {
 
       $Ext = "txt";
 
