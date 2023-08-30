@@ -90,6 +90,9 @@
     <div id="main" class="main py-6 sm:py-8 lg:py-12">
 
       <div class="mx-auto max-w-screen-md px-4 md:px-8">
+
+        <?php require_once("./preview.php"); ?>
+
         <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4">【ファイルの概要】</h1>
         <p class="mb-6 sm:text-lg md:mb-8">
           ファイル名: <?=$FileName?><br>
