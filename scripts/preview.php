@@ -11,7 +11,7 @@
 
     $PathInfo = pathinfo( FileInfo["FileName"] );
     if ( !isset( $PathInfo["extension"] ) )
-      die();
+      goto EndOfFile;
 
     $Ext = strtolower( $PathInfo["extension"] );
 
@@ -85,4 +85,9 @@
 
     }
 
+    else echo "不明な拡張子: ". htmlspecialchars( $Ext );
+
   }
+
+  EndOfFile:
+    echo "";
