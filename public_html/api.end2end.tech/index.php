@@ -7,7 +7,6 @@
    */
 
   // 必須ヘッダーの出力
-  header( "X-Frame-Options: deny" );
   header( "Strict-Transport-Security: max-age=63072000; preload" );
   header( "X-XSS-Protection: 1; mode=block" );
   header( "X-Content-Type-Options: nosniff" );
