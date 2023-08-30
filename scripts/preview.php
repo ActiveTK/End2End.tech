@@ -20,7 +20,7 @@
       if ( $Ext == "jpeg" )
         $Ext = "jpg";
 
-      if ( $FileSize < 1024 * 1024 * 10 ) {
+      if ( FileInfo["FileSize"] < 1024 * 1024 * 10 ) {
 
         $tempImage = sys_get_temp_dir() . "/end2endtech_" . FileInfo["FileID"];
         if ( !file_exists( $tempImage ) ) {
