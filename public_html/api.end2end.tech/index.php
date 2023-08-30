@@ -42,6 +42,11 @@
     require_once( "../../api/delete.php" );
     exit();
   }
+  else if ( request_path == "preview" ) {
+    header( "Access-Control-Allow-Origin: *" );
+    require_once( "../../api/preview.php" );
+    exit();
+  }
 
   // ファイルが存在しない場合
   header( "HTTP/1.1 404 Not Found" );
