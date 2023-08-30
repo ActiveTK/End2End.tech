@@ -65,7 +65,7 @@
 
           }
 
-          echo "<div><img src='" . APIEndPoint . "preview" . ( EnableAPIAsSubDomain ? "?" : "&" ) . "id=" . FileInfo["FileID"] . "&type=" . $Ext . "' style='width:{$width}px;height:{$height}px;'></div>";
+          echo "<div><img src='" . APIEndPoint . "preview" . ( EnableAPIAsSubDomain ? "?" : "&" ) . "id=" . FileInfo["FileID"] . "&type=" . $Ext . "' style='height:400px;width:auto;'></div>";
 
         }
 
