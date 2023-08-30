@@ -41,7 +41,7 @@
     if ( $Mime == "text/plain" ) {
       header( "Content-Type: text/html" );
       echo "<html><head><meta name=\"robots\" content=\"noindex, nofollow\"><meta name=\"color-scheme\" content=\"dark light\"></head><body style=\"background-color:#181818;color:#ffffff;\"><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">";
-      echo htmlspecialchars( file_get_contents( $File ), ENT_QUOTES, 'UTF-8' );
+      echo htmlspecialchars( file_get_contents( $File ), ENT_SUBSTITUTE, 'UTF-8' );
       echo "</pre></body></html>";
       exit();
     }
