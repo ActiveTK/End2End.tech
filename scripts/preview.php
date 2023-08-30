@@ -5,7 +5,7 @@
     die( "内部エラーが発生しました。" );
   }
   
-  $basepath = "../../objects/blob/";
+  $basepath = "../objects/blob/";
 
   if ( !defined( "DownloadBlocked" ) && !defined( "EndtoEndEncrypted" ) ) {
 
