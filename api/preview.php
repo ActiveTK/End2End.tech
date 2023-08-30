@@ -21,15 +21,15 @@
         $Mime = "image/jpg";
 		break;
 	
-      case 'png'
+      case 'png':
         $Mime = "image/png";
         break;
 
-      case 'gif'
+      case 'gif':
         $Mime = "image/gif";
         break;
 
-      case 'txt'
+      case 'txt':
         $Mime = "plain/text";
 
 	  default:
