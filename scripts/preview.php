@@ -82,7 +82,7 @@
         file_put_contents( $tempData, gzinflate( file_get_contents( $basepath . FileInfo["FileID"] ) ) );
       }
 
-      echo "<iframe style='width:604px;height:340px;' src='" . APIEndPoint . "preview" . ( EnableAPIAsSubDomain ? "?" : "&" ) . "id=" . FileInfo["FileID"] . "&type=" . $Ext . "'></iframe>";
+      echo "<iframe style='width:604px;height:340px;' src='" . APIEndPoint . "preview" . ( EnableAPIAsSubDomain ? "?" : "&" ) . "id=" . FileInfo["FileID"] . "&type=" . $Ext . "'></iframe><br>";
 
     }
 
