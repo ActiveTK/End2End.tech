@@ -11,7 +11,7 @@
 
     $PathInfo = pathinfo( FileInfo["FileName"] );
     if ( !isset( $PathInfo["extension"] ) )
-      goto EndOfFile;
+      $PathInfo["extension"] = "";
 
     $Ext = strtolower( $PathInfo["extension"] );
 
@@ -63,9 +63,10 @@
 
             }
 
-            echo "<div><img src='" . APIEndPoint . "preview" . ( EnableAPIAsSubDomain ? "?" : "&" ) . "id=" . FileInfo["FileID"] . "&type=" . $Ext . "' style='width:{$width}px;height:{$height}px;'></div>";
-
           }
+
+          echo "<div><img src='" . APIEndPoint . "preview" . ( EnableAPIAsSubDomain ? "?" : "&" ) . "id=" . FileInfo["FileID"] . "&type=" . $Ext . "' style='width:{$width}px;height:{$height}px;'></div>";
+
         }
 
       }
@@ -85,9 +86,4 @@
 
     }
 
-    else echo "不明な拡張子: ". htmlspecialchars( $Ext );
-
   }
-
-  EndOfFile:
-    echo "";
