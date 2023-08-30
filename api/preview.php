@@ -40,7 +40,7 @@
 
     if ( $Mime == "text/plain" ) {
       header( "Content-Type: text/html" );
-      echo "<html><head><meta name=\"color-scheme\" content=\"dark light\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">";
+      echo "<html><head><meta name=\"robots\" content=\"noindex, nofollow\"><meta name=\"color-scheme\" content=\"dark light\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">";
       echo htmlspecialchars( file_get_contents( $File ) );
       echo "</pre></body></html>";
       exit();
