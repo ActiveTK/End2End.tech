@@ -30,7 +30,7 @@
         break;
 
       case 'txt':
-        $Mime = "plain/text";
+        $Mime = "text/plain";
 
 	  default:
 		die();
