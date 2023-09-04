@@ -73,7 +73,7 @@
 
                 let reader = new FileReader();
                 reader.readAsBinaryString(_("file").files[0], 'UTF-8');
-                reader.onload = () => {
+                reader.onload = async () => {
                     _("stat").innerText = "データを暗号化しています..。";
                     var salt = CryptoJS.lib.WordArray.random(128 / 8);
                     var iv = CryptoJS.lib.WordArray.random(128 / 8);
