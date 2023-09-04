@@ -13,7 +13,7 @@
 			if (window.end2endtech.Encrypted === true) {
 
 				if (window.decryptionarray) {
-					_("stat").innerText = "ファイルを複合化しています..。";
+					_("stat").innerText = "ファイルを復号しています..。";
 
 					var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
 					var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
@@ -45,12 +45,12 @@
 
 						_("stat").innerText = "";
 					} catch (e) {
-						_("stat").innerText = "複合化に失敗しました。パスワードが合っているか、再度確認して下さい。";
+						_("stat").innerText = "復号に失敗しました。パスワードが合っているか、再度確認して下さい。";
 					}
 				}
 				else {
 					DownloadFile(window.end2endtech.FileID, function (result) {
-						_("stat").innerText = "ファイルを複合化しています..。";
+						_("stat").innerText = "ファイルを復号しています..。";
 
 						window.decryptionarray = result.split(',');
 						var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
@@ -84,7 +84,7 @@
 
 							_("stat").innerText = "";
 						} catch (e) {
-							_("stat").innerText = "複合化に失敗しました。パスワードが合っているか、再度確認して下さい。";
+							_("stat").innerText = "復号に失敗しました。パスワードが合っているか、再度確認して下さい。";
 						}
 					});
 				}

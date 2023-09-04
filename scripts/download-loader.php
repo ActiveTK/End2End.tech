@@ -109,9 +109,9 @@
             <input type="hidden" id="downloadData">
           <?php } else { ?>
             <?php if ( defined( "DataEncrypted" ) ) { ?>
-              ファイルはEnd-to-End暗号化されており、複合化にはパスワードが必要です。
+              ファイルはEnd-to-End暗号化されており、復号にはパスワードが必要です。
               <div class="flex">
-                <input type="text" id="password" placeholder="複合化パスワード" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <input type="text" id="password" placeholder="復号パスワード" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <input type="button" id="downloadData" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" value="ファイルをダウンロード">
               </div>
             <?php } else { ?>
