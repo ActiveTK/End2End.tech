@@ -77,35 +77,32 @@
                     _("stat").innerText = "データを暗号化しています..。";
                     var salt = CryptoJS.lib.WordArray.random(128 / 8);
                     var iv = CryptoJS.lib.WordArray.random(128 / 8);
-
-                    ParseToOnlyUTF8(reader.result).then(encoded => {
-                        var enc = CryptoJS.enc.Hex.stringify(salt) + ',' + CryptoJS.enc.Hex.stringify(iv) + ',' +
-                            CryptoJS.AES.encrypt(
-                                CryptoJS.enc.Utf8.parse(encoded),
-                                CryptoJS.PBKDF2(
-                                    CryptoJS.enc.Utf8.parse(_("password").value),
-                                    salt,
-                                    {
-                                        keySize: 128 / 8,
-                                        iterations: 500
-                                    }
-                                ),
+                    var enc = CryptoJS.enc.Hex.stringify(salt) + ',' + CryptoJS.enc.Hex.stringify(iv) + ',' +
+                        CryptoJS.AES.encrypt(
+                            CryptoJS.enc.Utf8.parse(reader.result),
+                            CryptoJS.PBKDF2(
+                                CryptoJS.enc.Utf8.parse(_("password").value),
+                                salt,
                                 {
-                                    iv: iv,
-                                    mode: CryptoJS.mode.CBC,
-                                    padding: CryptoJS.pad.Pkcs7
+                                    keySize: 128 / 8,
+                                    iterations: 500
                                 }
-                            );
+                            ),
+                            {
+                                iv: iv,
+                                mode: CryptoJS.mode.CBC,
+                                padding: CryptoJS.pad.Pkcs7
+                            }
+                        );
 
-                        let list = new DataTransfer();
-                        let file = new File([enc], _("file").files[0].name);
-                        list.items.add(file);
-                        _("file").files = list.files;
+                    let list = new DataTransfer();
+                    let file = new File([enc], _("file").files[0].name);
+                    list.items.add(file);
+                    _("file").files = list.files;
 
-                        enc = "";
+                    enc = "";
 
-                        sendFile(new FormData($("#uploader").get(0)));
-                    });
+                    sendFile(new FormData($("#uploader").get(0)));
                 };
             }
             else {
@@ -216,17 +213,6 @@
         var pwd = document.createTextNode(FileDetails["RemovePassword"]);
         pwd.className = "px-6 py-3";
         e.insertCell(2).appendChild(pwd);
-    }
-
-    function ParseToOnlyUTF8(...parts) {
-        return new Promise(resolve => {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const offset = reader.result.indexOf(",") + 1;
-                resolve(reader.result.slice(offset));
-            };
-            reader.readAsDataURL(new Blob(parts));
-        });
     }
 
 
