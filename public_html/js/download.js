@@ -9,7 +9,7 @@
 
         _("main").style.display = "block";
 
-		_("downloadData").onclick = async function () {
+		_("downloadData").onclick = function () {
 			if (window.end2endtech.Encrypted === true) {
 
 				if (window.decryptionarray) {
