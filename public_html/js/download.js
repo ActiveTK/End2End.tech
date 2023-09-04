@@ -53,30 +53,36 @@
 						_("stat").innerText = "ファイルを復号しています..。";
 
 						window.decryptionarray = result.split(',');
-						var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
-						var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
 
 						try {
+
+							var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
+							var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
+
+							var data = CryptoJS.AES.decrypt(
+								{
+									"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
+								},
+								CryptoJS.PBKDF2(
+									CryptoJS.enc.Utf8.parse(_("password").value),
+									salt,
+									{
+										keySize: 128 / 8,
+										iterations: 500
+									}
+								),
+								{
+									iv: iv,
+									mode: CryptoJS.mode.CBC,
+									padding: CryptoJS.pad.Pkcs7
+								}).toString(CryptoJS.enc.Utf8);
+
+							data = await ParseNotOnlyUTF8(data);
+
 							DownloadFileFromBlob(
 								new Blob(
 									[
-										CryptoJS.AES.decrypt(
-											{
-												"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
-											},
-											CryptoJS.PBKDF2(
-												CryptoJS.enc.Utf8.parse(_("password").value),
-												salt,
-												{
-													keySize: 128 / 8,
-													iterations: 500
-												}
-											),
-											{
-												iv: iv,
-												mode: CryptoJS.mode.CBC,
-												padding: CryptoJS.pad.Pkcs7
-											}).toString(CryptoJS.enc.Utf8)
+										data
 									],
 									{ "type": "application/force-download" }
 								), window.end2endtech.FileName
@@ -154,6 +160,10 @@
 		setTimeout(function () {
 			URL.revokeObjectURL(window.dataurl);
 		}, 20000);
+	}
+
+	function ParseNotOnlyUTF8(text) {
+		return fetch("data:text/plain;charset=UTF-8;base64," + text).then(response => response.text());
 	}
 
 }(window));
