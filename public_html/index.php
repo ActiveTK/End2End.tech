@@ -128,7 +128,7 @@
   }
   else if ( request_path == "js/inflate.js" ) {
     header( "Content-Type: text/javascript" );
-    readfile( "../lib/inflate.js.js" );
+    readfile( "../lib/inflate.js" );
     exit();
   }
   else if ( request_path == "js/deflate.js" ) {
