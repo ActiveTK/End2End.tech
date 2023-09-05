@@ -55,6 +55,13 @@
 						window.decryptionarray = result.split(',');
 						var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
 						var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
+                        window.decryptionarray[2] = decodeURIComponent(
+							RawDeflate.inflate(
+   						        atob(
+									window.decryptionarray[2]
+							    )
+							)
+						);
 
 						try {
 							DownloadFileFromBlob(

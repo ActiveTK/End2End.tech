@@ -79,7 +79,13 @@
                     var iv = CryptoJS.lib.WordArray.random(128 / 8);
                     var enc = CryptoJS.enc.Hex.stringify(salt) + ',' + CryptoJS.enc.Hex.stringify(iv) + ',' +
                         CryptoJS.AES.encrypt(
-                            CryptoJS.enc.Utf8.parse(reader.result),
+                            CryptoJS.enc.Utf8.parse(
+                                btoa(
+                                    RawDeflate.deflate(
+                                        encodeURIComponent(reader.result)
+                                    )
+                                )
+                            ),
                             CryptoJS.PBKDF2(
                                 CryptoJS.enc.Utf8.parse(_("password").value),
                                 salt,
