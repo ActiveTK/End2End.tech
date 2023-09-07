@@ -18,13 +18,13 @@
 
     header( "Content-Type: text/html" );
     echo "<html><head><meta name=\"robots\" content=\"noindex, nofollow\"><meta name=\"color-scheme\" content=\"dark light\"></head><body style=\"background-color:#181818;color:#ffffff;\"><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">";
-    $fileheader = file_get_contents( $File, FALSE, NULL, 0, 1024 );
+    $fileheader = file_get_contents( $File );
     $text = json_encode( array(
       "Encrypted" => true,
       "Salt" => substr($fileheader, 0, 32),
       "IV" => substr($fileheader, 33, 32),
       "Mode" => "CryptoJS.mode.CBC",
-      "Data" => substr($fileheader, 66) . "... (省略されました)"
+      "Data" => substr($fileheader, 66)
     ), JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT );
     echo htmlspecialchars( $text, ENT_SUBSTITUTE, 'UTF-8' );
     echo "</pre></body></html>";

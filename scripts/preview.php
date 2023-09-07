@@ -10,7 +10,16 @@
   if ( !defined( "DownloadBlocked" ) && !defined( "EndtoEndEncrypted" ) ) {
 
     if ( !empty( FileInfo["EndtoEndEncrypted"] ) && FileInfo["EndtoEndEncrypted"] == "true" ) {
+
+      $tempData = sys_get_temp_dir() . "/end2endtech_" . FileInfo["FileID"];
+      if ( $FileSize > 1024 ) {
+        file_put_contents( $tempData, substr( gzinflate( file_get_contents( $basepath . FileInfo["FileID"] ) ) , 0, 1024 ) . ".. (省略されました)" );
+      } else {
+        file_put_contents( $tempData, gzinflate( file_get_contents( $basepath . FileInfo["FileID"] ) ) );
+      }
+
       echo "<iframe style='width:604px;height:340px;' src='" . APIEndPoint . "preview" . ( EnableAPIAsSubDomain ? "?" : "&" ) . "id=" . FileInfo["FileID"] . "&encrypted'></iframe><br>";
+
     } else {
 
       $PathInfo = pathinfo( FileInfo["FileName"] );
