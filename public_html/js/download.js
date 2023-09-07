@@ -55,7 +55,11 @@
 						window.decryptionarray = [];
 						window.decryptionarray[0] = String.fromCharCode.apply("", new Int8Array(result.slice(0, 32)));
 						window.decryptionarray[1] = String.fromCharCode.apply("", new Int8Array(result.slice(33, 65)));
-						window.decryptionarray[2] = String.fromCharCode.apply("", new Int8Array(result.slice(66)));
+
+						var uint8Arr = new Int8Array(result.slice(66));
+						for (var i = 0; i < uint8Arr.length; i += 1024)
+							window.decryptionarray[2] += String.fromCharCode.apply(null, uint8Arr.slice(i, i + 1024));
+
 						var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
 						var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
 
