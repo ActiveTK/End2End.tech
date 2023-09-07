@@ -12,7 +12,7 @@
     if ( !empty( FileInfo["EndtoEndEncrypted"] ) && FileInfo["EndtoEndEncrypted"] == "true" ) {
 
       $tempData = sys_get_temp_dir() . "/end2endtech_" . FileInfo["FileID"];
-      if ( $FileSize > 1024 ) {
+      if ( FileInfo["FileSize"] > 1024 ) {
         file_put_contents( $tempData, substr( gzinflate( file_get_contents( $basepath . FileInfo["FileID"] ) ) , 0, 1024 ) . ".. (省略されました)" );
       } else {
         file_put_contents( $tempData, gzinflate( file_get_contents( $basepath . FileInfo["FileID"] ) ) );
@@ -93,7 +93,7 @@
         $Ext = "txt";
 
         $tempData = sys_get_temp_dir() . "/end2endtech_" . FileInfo["FileID"];
-        if ( $FileSize > 1024 ) {
+        if ( FileInfo["FileSize"] > 1024 ) {
           file_put_contents( $tempData, substr( gzinflate( file_get_contents( $basepath . FileInfo["FileID"] ) ) , 0, 1024 ) . "\n\n(1025バイト以降は省略されました。続きはダウンロードしてご確認下さい。)" );
         } else {
           file_put_contents( $tempData, gzinflate( file_get_contents( $basepath . FileInfo["FileID"] ) ) );
