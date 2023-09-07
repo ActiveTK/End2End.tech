@@ -86,7 +86,7 @@
 						} catch (e) {
 							_("stat").innerText = "復号に失敗しました。パスワードが合っているか、再度確認して下さい。";
 						}
-					});
+					}, true);
 				}
 			}
 			else {
@@ -121,7 +121,7 @@
 
     });
 
-	function DownloadFile(fileid, callback) {
+	function DownloadFile(fileid, callback, intext = false) {
 
 		var xhr = new XMLHttpRequest
 		if (window.end2endtech.EnableAPIAsSubDomain)
@@ -131,12 +131,16 @@
 		xhr.onprogress = function (evt) {
 			_("stat").innerText = "ダウンロード中..(" + (100 * evt.loaded / evt.total | 0) + "%完了)..。";
 		};
-		xhr.responseType = "arraybuffer";
+		if (!intext)
+     		xhr.responseType = "arraybuffer";
 		xhr.onreadystatechange = function (evt) {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 					_("stat").innerText = "ダウンロードが完了しました。";
-					callback(xhr.response);
+					if (!intext)
+						callback(xhr.response);
+					else
+						callback(xhr.responseText);
 				}
 			}
 		}
