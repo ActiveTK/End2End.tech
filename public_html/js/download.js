@@ -37,7 +37,7 @@
 											iv: iv,
 											mode: CryptoJS.mode.CBC,
 											padding: CryptoJS.pad.Pkcs7
-										}).toString(CryptoJS.enc.Utf16)
+										}).toString(CryptoJS.enc.Latin1)
 								],
 								{ "type": "application/force-download" }
 							), window.end2endtech.FileName
@@ -45,7 +45,7 @@
 
 						_("stat").innerText = "";
 					} catch (e) {
-						_("stat").innerText = "復号に失敗しました。パスワードが合っているか、再度確認して下さい。";
+						_("stat").innerText = "復号に失敗しました(" + e + ")。パスワードが合っているか、再度確認して下さい。";
 					}
 				}
 				else {
@@ -92,7 +92,7 @@
 
 							_("stat").innerText = "";
 						} catch (e) {
-							_("stat").innerText = "復号に失敗しました。パスワードが合っているか、再度確認して下さい。";
+							_("stat").innerText = "復号に失敗しました(" + e + ")。パスワードが合っているか、再度確認して下さい。";
 						}
 					});
 				}
