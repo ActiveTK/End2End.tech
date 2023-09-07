@@ -52,7 +52,10 @@
 					DownloadFile(window.end2endtech.FileID, function (result) {
 						_("stat").innerText = "ファイルを復号しています..。";
 
-						window.decryptionarray = result.split(',');
+						window.decryptionarray = [];
+						window.decryptionarray[0] = String.fromCharCode.apply("", new Int8Array(result.slice(0, 32)));
+						window.decryptionarray[1] = String.fromCharCode.apply("", new Int8Array(result.slice(33, 65)));
+						window.decryptionarray[2] = String.fromCharCode.apply("", new Int8Array(result.slice(66)));
 						var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
 						var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
 
@@ -86,7 +89,7 @@
 						} catch (e) {
 							_("stat").innerText = "復号に失敗しました。パスワードが合っているか、再度確認して下さい。";
 						}
-					}, true);
+					});
 				}
 			}
 			else {
@@ -121,7 +124,7 @@
 
     });
 
-	function DownloadFile(fileid, callback, intext = false) {
+	function DownloadFile(fileid, callback) {
 
 		var xhr = new XMLHttpRequest
 		if (window.end2endtech.EnableAPIAsSubDomain)
@@ -131,16 +134,12 @@
 		xhr.onprogress = function (evt) {
 			_("stat").innerText = "ダウンロード中..(" + (100 * evt.loaded / evt.total | 0) + "%完了)..。";
 		};
-		if (!intext)
-     		xhr.responseType = "arraybuffer";
+    	xhr.responseType = "arraybuffer";
 		xhr.onreadystatechange = function (evt) {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 					_("stat").innerText = "ダウンロードが完了しました。";
-					if (!intext)
-						callback(xhr.response);
-					else
-						callback(xhr.responseText);
+				    callback(xhr.response);
 				}
 			}
 		}
