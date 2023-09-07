@@ -24,7 +24,7 @@
       "Salt" => substr($fileheader, 0, 32),
       "IV" => substr($fileheader, 33, 32),
       "Mode" => "CryptoJS.mode.CBC",
-      "Data" => substr($fileheader, 66) . "... (省略されました)";
+      "Data" => substr($fileheader, 66) . "... (省略されました)"
     ), JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT );
     echo htmlspecialchars( $text, ENT_SUBSTITUTE, 'UTF-8' );
     echo "</pre></body></html>";
