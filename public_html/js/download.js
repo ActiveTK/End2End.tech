@@ -83,7 +83,7 @@
 												iv: iv,
 												mode: CryptoJS.mode.CBC,
 												padding: CryptoJS.pad.Pkcs7
-											}).toString(CryptoJS.enc.Utf16)
+											}).toString(CryptoJS.enc.Latin1)
 									],
 									{ "type": "application/force-download" }
 								), window.end2endtech.FileName
