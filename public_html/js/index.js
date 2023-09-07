@@ -81,7 +81,7 @@
                         CryptoJS.AES.encrypt(
                             CryptoJS.enc.Utf16.parse(reader.result),
                             CryptoJS.PBKDF2(
-                                CryptoJS.enc.Utf16.parse(_("password").value),
+                                CryptoJS.enc.Utf8.parse(_("password").value),
                                 salt,
                                 {
                                     keySize: 128 / 8,
