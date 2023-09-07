@@ -18,29 +18,26 @@
 					var salt = CryptoJS.enc.Hex.parse(window.decryptionarray[0]);
 					var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
 					try {
-						DownloadFileFromBlob(
-							new Blob(
-								[
-									CryptoJS.AES.decrypt(
-										{
-											"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
-										},
-										CryptoJS.PBKDF2(
-											CryptoJS.enc.Utf8.parse(_("password").value),
-											salt,
-											{
-												keySize: 128 / 8,
-												iterations: 500
-											}
-										),
-										{
-											iv: iv,
-											mode: CryptoJS.mode.CBC,
-											padding: CryptoJS.pad.Pkcs7
-										}).toString(CryptoJS.enc.Latin1)
-								],
-								{ "type": "application/force-download" }
-							), window.end2endtech.FileName
+						DownloadFileFromBlobURL(
+							CryptoJS.AES.decrypt(
+								{
+									"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
+								},
+								CryptoJS.PBKDF2(
+									CryptoJS.enc.Utf8.parse(_("password").value),
+									salt,
+									{
+										keySize: 128 / 8,
+										iterations: 500
+									}
+								),
+								{
+									iv: iv,
+									mode: CryptoJS.mode.CBC,
+									padding: CryptoJS.pad.Pkcs7
+								}
+							).toString(CryptoJS.enc.Utf8),
+							window.end2endtech.FileName
 						);
 
 						_("stat").innerText = "";
@@ -65,29 +62,26 @@
 						var iv = CryptoJS.enc.Hex.parse(window.decryptionarray[1]);
 
 						try {
-							DownloadFileFromBlob(
-								new Blob(
-									[
-										CryptoJS.AES.decrypt(
-											{
-												"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
-											},
-											CryptoJS.PBKDF2(
-												CryptoJS.enc.Utf8.parse(_("password").value),
-												salt,
-												{
-													keySize: 128 / 8,
-													iterations: 500
-												}
-											),
-											{
-												iv: iv,
-												mode: CryptoJS.mode.CBC,
-												padding: CryptoJS.pad.Pkcs7
-											}).toString(CryptoJS.enc.Latin1)
-									],
-									{ "type": "application/force-download" }
-								), window.end2endtech.FileName
+							DownloadFileFromBlobURL(
+							    CryptoJS.AES.decrypt(
+							        {
+									    "ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
+									},
+									CryptoJS.PBKDF2(
+										CryptoJS.enc.Utf8.parse(_("password").value),
+										salt,
+										{
+											keySize: 128 / 8,
+											iterations: 500
+										}
+									),
+									{
+										iv: iv,
+										mode: CryptoJS.mode.CBC,
+										padding: CryptoJS.pad.Pkcs7
+									}
+								).toString(CryptoJS.enc.Utf8),
+								window.end2endtech.FileName
 							);
 
 							_("stat").innerText = "";
@@ -163,6 +157,15 @@
 		setTimeout(function () {
 			URL.revokeObjectURL(window.dataurl);
 		}, 20000);
+	}
+
+	function DownloadFileFromBlobURL(blob, filename) {
+		const a = document.createElement("a");
+		document.body.appendChild(a);
+		a.download = filename;
+		a.href = blob;
+		a.click();
+		a.remove();
 	}
 
 }(window));

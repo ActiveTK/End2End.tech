@@ -72,14 +72,14 @@
                     return alert("パスワードを指定して下さい。");
 
                 let reader = new FileReader();
-                reader.readAsBinaryString(_("file").files[0], 'UTF-8');
+                reader.readAsDataURL(_("file").files[0]);
                 reader.onload = () => {
                     _("stat").innerText = "データを暗号化しています..。";
                     var salt = CryptoJS.lib.WordArray.random(128 / 8);
                     var iv = CryptoJS.lib.WordArray.random(128 / 8);
                     var enc = CryptoJS.enc.Hex.stringify(salt) + ',' + CryptoJS.enc.Hex.stringify(iv) + ',' +
                         CryptoJS.AES.encrypt(
-                            CryptoJS.enc.Latin1.parse(reader.result),
+                            CryptoJS.enc.Utf8.parse(reader.result),
                             CryptoJS.PBKDF2(
                                 CryptoJS.enc.Utf8.parse(_("password").value),
                                 salt,
