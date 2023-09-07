@@ -131,11 +131,12 @@
 		xhr.onprogress = function (evt) {
 			_("stat").innerText = "ダウンロード中..(" + (100 * evt.loaded / evt.total | 0) + "%完了)..。";
 		};
+		xhr.responseType = "arraybuffer";
 		xhr.onreadystatechange = function (evt) {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 					_("stat").innerText = "ダウンロードが完了しました。";
-					callback(xhr.responseText);
+					callback(xhr.response);
 				}
 			}
 		}
