@@ -126,16 +126,6 @@
     readfile( "../lib/CryptoJS/components/aes.js" );
     exit();
   }
-  else if ( request_path == "js/inflate.js" ) {
-    header( "Content-Type: text/javascript" );
-    readfile( "../lib/inflate.js" );
-    exit();
-  }
-  else if ( request_path == "js/deflate.js" ) {
-    header( "Content-Type: text/javascript" );
-    readfile( "../lib/deflate.js" );
-    exit();
-  }
 
   // 指定されたファイルIDが存在するか確認
   $Note = array();

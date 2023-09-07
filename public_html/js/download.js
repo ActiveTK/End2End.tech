@@ -21,26 +21,23 @@
 						DownloadFileFromBlob(
 							new Blob(
 								[
-									getRaw(				
-										CryptoJS.AES.decrypt(
-										  {
-											  "ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
-										  },
-										  CryptoJS.PBKDF2(
-											   CryptoJS.enc.Utf8.parse(_("password").value),
-											  salt,
-											  {
-												  keySize: 128 / 8,
-												  iterations: 500
-											  }
-										  ),
-										  {
-											  iv: iv,
-											  mode: CryptoJS.mode.CBC,
-											   padding: CryptoJS.pad.Pkcs7
-										  }
-									  ).toString(CryptoJS.enc.Utf8)
-								    )
+									CryptoJS.AES.decrypt(
+										{
+											"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
+										},
+										CryptoJS.PBKDF2(
+											CryptoJS.enc.Utf8.parse(_("password").value),
+											salt,
+											{
+												keySize: 128 / 8,
+												iterations: 500
+											}
+										),
+										{
+											iv: iv,
+											mode: CryptoJS.mode.CBC,
+											padding: CryptoJS.pad.Pkcs7
+										}).toString(CryptoJS.enc.Utf8)
 								],
 								{ "type": "application/force-download" }
 							), window.end2endtech.FileName
@@ -63,27 +60,23 @@
 							DownloadFileFromBlob(
 								new Blob(
 									[
-										getRaw(				
-								      		CryptoJS.AES.decrypt(
-										        {
-											    	"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
-											    },
-											    CryptoJS.PBKDF2(
-											     	CryptoJS.enc.Utf8.parse(_("password").value),
-												    salt,
-												    {
-												    	keySize: 128 / 8,
-												    	iterations: 500
-												    }
-											    ),
-											    {
-											    	iv: iv,
-											    	mode: CryptoJS.mode.CBC,
-										     		padding: CryptoJS.pad.Pkcs7
-										    	}
-										    ).toString(CryptoJS.enc.Utf8)
-									    )
-
+										CryptoJS.AES.decrypt(
+											{
+												"ciphertext": CryptoJS.enc.Base64.parse(window.decryptionarray[2])
+											},
+											CryptoJS.PBKDF2(
+												CryptoJS.enc.Utf8.parse(_("password").value),
+												salt,
+												{
+													keySize: 128 / 8,
+													iterations: 500
+												}
+											),
+											{
+												iv: iv,
+												mode: CryptoJS.mode.CBC,
+												padding: CryptoJS.pad.Pkcs7
+											}).toString(CryptoJS.enc.Utf8)
 									],
 									{ "type": "application/force-download" }
 								), window.end2endtech.FileName
@@ -162,19 +155,6 @@
 		setTimeout(function () {
 			URL.revokeObjectURL(window.dataurl);
 		}, 20000);
-	}
-
-	function getRaw(data) {
-		var result = decodeURIComponent(
-			RawDeflate.inflate(
-				atob(
-					data
-				)
-			)
-		);
-		if (result.length == 0)
-		    throw "Password is wrong.. plz retry!";
-		return result;
 	}
 
 }(window));
