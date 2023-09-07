@@ -37,7 +37,7 @@
 											iv: iv,
 											mode: CryptoJS.mode.CBC,
 											padding: CryptoJS.pad.Pkcs7
-										})
+										}).toString(CryptoJS.enc.Utf16)
 								],
 								{ "type": "application/force-download" }
 							), window.end2endtech.FileName
@@ -79,7 +79,7 @@
 												iv: iv,
 												mode: CryptoJS.mode.CBC,
 												padding: CryptoJS.pad.Pkcs7
-											})
+											}).toString(CryptoJS.enc.Utf16)
 									],
 									{ "type": "application/force-download" }
 								), window.end2endtech.FileName
