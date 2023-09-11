@@ -29,7 +29,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#00bb00">
+    <meta name="theme-color" content="#000000">
     <title>End2End.tech - Anonymous File Uploader</title>
     <meta name="robots" content="All">
     <meta name="description" content="匿名で簡単にファイルをアップロードできます。End2End暗号化対応・ノーログで、安心安全のオープンソースです。">
