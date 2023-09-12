@@ -116,6 +116,10 @@
     require_once( "../scripts/donate.php" );
     exit();
   }
+  else if ( request_path == "privacy" ) {
+    require_once( "../scripts/privacy.php" );
+    exit();
+  }
   else if ( request_path == "js/pswmeter.js" ) {
     header( "Content-Type: text/javascript" );
     readfile( "../lib/pswmeter.js" );

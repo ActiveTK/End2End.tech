@@ -1,0 +1,3 @@
+Sitemap: https://end2end.tech/sitemap.xml
+User-agent: Megalodon
+Disallow: /
