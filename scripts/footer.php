@@ -45,10 +45,10 @@
                 <a href="<?=FullURL?>contact" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">お問い合わせ</a>
               </div>
               <div>
-                <a href="<?=FullURL?>donate" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">寄付</a>
+                <a href="<?=FullURL?>privacy" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">プライバシーポリシー</a>
               </div>
               <div>
-                <a href="<?=FullURL?>sitemap.xml" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">sitemap.xml</a>
+                <a href="<?=FullURL?>donate" class="text-gray-400 transition duration-100 hover:text-indigo-500 active:text-indigo-600">寄付</a>
               </div>
             </nav>
           </div>
