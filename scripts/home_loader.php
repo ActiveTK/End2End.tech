@@ -38,7 +38,7 @@
     <script src="https://code.activetk.jp/ActiveTK.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
     <script>window.end2endtech={Endpoint:atk.decode("<?=urlencode(APIEndPoint)?>")};</script>
-    <script src="/js/index.js"></script>
+    <script src="/js/index.js?v2"></script>
     <link href="/css/index.css" rel="stylesheet">
   </head>
   <body>
@@ -114,8 +114,8 @@
               <tr>
                 <th class="px-6 py-3">ファイル名</th>
                 <th class="px-6 py-3">URL</th>
-                <th class="px-6 py-3">削除パスワード</th>
                 <th class="px-6 py-3">共有</th>
+                <th class="px-6 py-3">削除パスワード</th>
               </tr>
             </thead>
             <tbody></tbody>
