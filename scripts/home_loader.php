@@ -115,6 +115,7 @@
                 <th class="px-6 py-3">ファイル名</th>
                 <th class="px-6 py-3">URL</th>
                 <th class="px-6 py-3">削除パスワード</th>
+                <th class="px-6 py-3">共有</th>
               </tr>
             </thead>
             <tbody></tbody>

@@ -213,6 +213,27 @@
         var pwd = document.createTextNode(FileDetails["RemovePassword"]);
         pwd.className = "px-6 py-3";
         e.insertCell(2).appendChild(pwd);
+
+        var anchor2 = document.createElement('a');
+        anchor2.appendChild(document.createTextNode("ファイルを共有"));
+        anchor2.href = "javascript:window.shareURL(\"" + atk.encode(FileDetails["URL"]) + ", \"" + atk.encode(FileDetails["FileName"]) + "\");";
+        anchor2.className = "px-6 py-3";
+        e.insertCell(3).appendChild(anchor2);
+
+    }
+
+    window.shareURL = function (encodedurl, filename) {
+        var url = atk.decode(encodedurl);
+        if (!window.navigator.share) {
+            atk.copy(url);
+            alert("URLをコピーしました！");
+        }
+        else {
+            window.navigator.share({
+                title: filename,
+                url: url
+            });
+        }
     }
 
 
