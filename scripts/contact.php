@@ -70,7 +70,11 @@
     <div id="main" class="main py-6 sm:py-8 lg:py-12">
       <div class="mx-auto max-w-screen-md px-4 md:px-8">
 
-        <h1 class="textblue mb-2 text-xl font-semibold sm:text-2xl md:mb-4"></h1>
+        <p class="mb-6 sm:text-lg md:mb-8">
+          本サービスでは、以下のフォームからお問い合わせを受け付けております。<br>
+          お問い合わせ頂いた内容は<a href="/privacy" target="_blank">プライバシーポリシー</a>に基づき、サービスの改善に利用させて頂きます。
+        </p>
+
         <p class="mb-6 sm:text-lg md:mb-8">
           <form action="" enctype="multipart/form-data" method="post">
             タイトル: <input type="text" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" style="width:100%;" name="title" maxlength="120" placeholder="ここにタイトルを入力してください(120文字まで)" required>
@@ -79,9 +83,12 @@
             <br><br>
             メールアドレス: <input type="email" class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" name="email" style="width:100%;" maxlength="120" placeholder="メールアドレスを入力して下さい" required>
             <br><br>
+            内容:<br>
             <textarea name="data" maxlength="1080" placeholder="ここに内容を入力してください(1080文字まで)" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" style="height:400px;" required></textarea>
             <br>
-            <input type="submit" value="送信" style="width:73px;height:33px;background-color:#90ee90;">
+            <input type="submit" value="送信" style="width:73px;height:33px;color:#000000;background-color:#90ee90;"><br>
+            <pre>※本フォーム内に個人情報を入力しないで下さい。
+また、お問い合わせの内容に機密情報や脆弱性情報が含まれる場合には、<a href="/pgp.asc" download="end2end_tech.asc">PGP公開鍵</a>で暗号化して送信することもできます。</pre>
           </form>
         </p>
 
