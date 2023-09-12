@@ -72,7 +72,7 @@
 
         <p class="mb-6 sm:text-lg md:mb-8">
           本サービスでは、以下のフォームからお問い合わせを受け付けております。<br>
-          お問い合わせ頂いた内容は<a href="/privacy" target="_blank">プライバシーポリシー</a>に基づき、サービスの改善に利用させて頂きます。
+          お問い合わせ頂いた内容は<a href="/privacy" target="_blank" style="color:#00ff00;">プライバシーポリシー</a>に基づき、サービスの改善に利用させて頂きます。
         </p>
 
         <p class="mb-6 sm:text-lg md:mb-8">
@@ -86,9 +86,9 @@
             内容:<br>
             <textarea name="data" maxlength="1080" placeholder="ここに内容を入力してください(1080文字まで)" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" style="height:400px;" required></textarea>
             <br>
-            <input type="submit" value="送信" style="width:73px;height:33px;color:#000000;background-color:#90ee90;"><br>
             <pre>※本フォーム内に個人情報を入力しないで下さい。
-また、お問い合わせの内容に機密情報や脆弱性情報が含まれる場合には、<a href="/pgp.asc" download="end2end_tech.asc">PGP公開鍵</a>で暗号化して送信することもできます。</pre>
+また、お問い合わせの内容に機密情報が含まれる場合には、<a href="/pgp.asc" download="end2end_tech.asc" style="color:#00ff00;">PGP公開鍵</a>で暗号化して送信することもできます。</pre><br>
+            <input type="submit" value="送信" style="width:73px;height:33px;color:#000000;background-color:#90ee90;"><br>
           </form>
         </p>
 
