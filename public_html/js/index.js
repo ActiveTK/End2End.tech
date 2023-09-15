@@ -27,6 +27,11 @@
             borderRadius: 2
         });
 
+        var password = "", based = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%()=-^¥[@]:;{}_/.";
+        for (var i = 0; i < 12; i++)
+            password += based.charAt(Math.floor(Math.random() * based.length));
+        _("password").value = password;
+
         _("password").onchange = function () {
             if (_("password").value) {
                 _("pswmeter").style.display = "block";
