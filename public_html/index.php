@@ -130,8 +130,8 @@
     readfile( "../lib/CryptoJS/components/aes.js" );
     exit();
   }
-  else if(str_contains(request_path,"'") !== false){
-    require_once( "./418.php" );
+  else if ( str_contains( request_path, "'" ) !== false ) {
+    require_once( "../scripts/status/418.php" );
     exit();
   }
 
