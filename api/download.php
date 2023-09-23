@@ -32,6 +32,8 @@
         if ( time() > FileInfo["FileValidDateLimit"] * 1 )
           die( "アップロードしたユーザーが設定したファイルのダウンロード期限を超えたため、ファイルは無効となりました。" );
       }
+      if ( FileInfo["DeletePassword"] == "!" )
+        define( "DownloadBlocked", "このファイルは利用規約に違反しているため、ダウンロードできません。" );
 
       if ( !empty( FileInfo["BlockVPN"] ) && FileInfo["BlockVPN"] == "true" ) {
         $headers = getallheaders();

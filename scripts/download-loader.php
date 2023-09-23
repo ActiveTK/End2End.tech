@@ -41,6 +41,8 @@
     if ( time() > FileInfo["FileValidDateLimit"] * 1 )
       define( "DownloadBlocked", "アップロードしたユーザーが設定したファイルのダウンロード期限を超えたため、ファイルは無効となりました。" );
   }
+  if ( FileInfo["DeletePassword"] == "!" )
+    define( "DownloadBlocked", "このファイルは利用規約に違反しているため、ダウンロードできません。" );
   if ( !empty( FileInfo["EndtoEndEncrypted"] ) && FileInfo["EndtoEndEncrypted"] == "true" ) {
     define( "DataEncrypted", true );
   }
