@@ -118,7 +118,7 @@
                 for (let i = 0; i < fList.length; i++) {
 
                     let list = new DataTransfer();
-                    list.items.add(fList[i].name);
+                    list.items.add(fList[i]);
                     _("fileOne").files = list.files;
                     sendFile(new FormData($("#uploader").get(0)));
 
