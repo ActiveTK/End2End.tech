@@ -43,8 +43,6 @@
             e.stopPropagation();
             e.preventDefault();
             var files = e.dataTransfer.files;
-            if (files.length > 1)
-               return alert('ファイルは一つまで選択できます。');
             _("file").files = files;
         }, false);
         _("uploadzone").addEventListener('dragover', function (e) {
@@ -57,7 +55,7 @@
 
         _("uploader").onsubmit = function () {
 
-            if (_("file").files.length != 1)
+            if (_("file").files.length == 0)
                 return alert('ファイルを選択して下さい。');
 
             _("submitData").disabled = true;
@@ -75,6 +73,9 @@
 
                 if (!_("password").value)
                     return alert("パスワードを指定して下さい。");
+
+                if (_("file").files.length != 0)
+                    return alert('複数のファイルを同時に暗号化してアップロードすることはできません。');
 
                 let reader = new FileReader();
                 reader.readAsDataURL(_("file").files[0]);
@@ -103,7 +104,7 @@
                     let list = new DataTransfer();
                     let file = new File([enc], _("file").files[0].name);
                     list.items.add(file);
-                    _("file").files = list.files;
+                    _("fileOne").files = list.files;
 
                     enc = "";
 
@@ -111,8 +112,22 @@
                 };
             }
             else {
-              sendFile(new FormData($("#uploader").get(0)));
+
+                const fList = _("file").files;
+
+                for (let i = 0; i < fList.length; i++) {
+
+                    let list = new DataTransfer();
+                    list.items.add(fList[i].name);
+                    _("fileOne").files = list.files;
+                    sendFile(new FormData($("#uploader").get(0)));
+
+                }
             }
+
+            try {
+                _("file").value = "";
+            } catch { }
 
             return false;
         }
@@ -158,7 +173,7 @@
                     _("stat").innerText = "";
 
                     try {
-                        _("file").value = "";
+                        _("fileOne").value = "";
                     }
                     catch { }
 

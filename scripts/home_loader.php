@@ -62,7 +62,8 @@
           <div class="textcenter order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-1/2" id="uploadzone">
             <p class="mt-[3rem]">ここにファイルをドラッグ&ドロップして下さい。</p>
             <p class="mt-5">または、ファイルを選択(<?=byte_format(MaxUploadSize, 0)?>以内):</p>
-            <input id="file" name="file" type="file" required>
+            <input id="file" type="file" multiple required>
+            <input id="fileOne" name="file" type="file" style="display:none;">
           </div>
 
           <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-1/2">
