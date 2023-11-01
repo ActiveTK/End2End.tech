@@ -56,7 +56,7 @@
         _("uploader").onsubmit = function () {
 
             if (_("file").files.length == 0)
-                return alert('ファイルを選択して下さい。');
+                return !alert('ファイルを選択して下さい。');
 
             _("submitData").disabled = true;
             _("stat").innerText = "ファイルをアップロードしています..。";
@@ -72,10 +72,10 @@
             if (_("setPassword").checked) {
 
                 if (!_("password").value)
-                    return alert("パスワードを指定して下さい。");
+                    return !alert("パスワードを指定して下さい。");
 
                 if (_("file").files.length != 0)
-                    return alert('複数のファイルを同時に暗号化してアップロードすることはできません。');
+                    return !alert('複数のファイルを同時に暗号化してアップロードすることはできません。');
 
                 let reader = new FileReader();
                 reader.readAsDataURL(_("file").files[0]);
