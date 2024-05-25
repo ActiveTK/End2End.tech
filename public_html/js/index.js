@@ -230,7 +230,7 @@
 
         let pieceSize = 80 * 1024 * 1024;
         let pieceCount = Math.ceil(filedata.size / pieceSize);
-        getOverridableKey(filedata, pieceCount, function(dataKey) {
+        getOverridableKey(filedata, function(dataKey) {
 
             /*  dataKeyの中身
                 "Status" => "OK",
@@ -264,12 +264,11 @@
 
     }
 
-    function getOverridableKey(fileData, chunkCount, callback) {
+    function getOverridableKey(fileData, callback) {
 
         let request_key = new FormData;
         request_key.append("filename", fileData.name);
         request_key.append("size", fileData.size);
-        request_key.append("chunks", chunkCount);
 
         if (_("blockVPN").checked)
             request_key.append("blockVPN", "true");

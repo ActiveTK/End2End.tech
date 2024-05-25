@@ -70,7 +70,7 @@
       $stmt->execute( [
         $FileID,
         $FileName,
-        $Size,
+        $_POST["size"],
         $Hash,
         "0",
         time(),
