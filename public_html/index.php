@@ -32,16 +32,16 @@
   // ex: (GET /hoge/index.php HTTP/1.1) => request_path === "hoge/index.php"
   define( "request_path", ( isset( $_GET["request"] ) && is_string( $_GET["request"] ) ) ? strtolower( $_GET["request"] ) : "" );
 
+  // 無限ループ防止
+  if ( request_path == "js" || request_path == "css" || request_path == "js/" || request_path == "css/" ) {
+    header( "Location: https://end2end.tech/" );
+    exit();
+  }
+
   // パスの末尾がスラッシュである場合の処理
   if ( strlen( request_path ) > 0 && substr( request_path, -1 ) == "/" ) {
 
     $fixedURI = strtolower( substr( $_GET["request"], 0, -1 ) );
-    // 無限ループ防止
-    if ( request_path == "js" || request_path == "css" ) {
-      header( "Location: https://end2end.tech/" );
-      exit();
-    }
-
     header( "Location: https://end2end.tech/{$fixedURI}", true, 301 );
     exit();
   }
