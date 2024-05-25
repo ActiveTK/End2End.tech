@@ -23,7 +23,7 @@
     if( !is_numeric( $_POST["size"] ) || $_POST["size"] * 1 > MaxUploadSize )
       die( json_encode( array( "Error"=>"エラー: ファイルサイズが" . MaxUploadSize . "バイトを超えています。(ERR_FILE_TOO_BIG)" ), JSON_UNESCAPED_UNICODE ) );
     
-    $FileID = substr( hash_file( 'md5', $_POST["filename"]. $_POST["size"] ), 0, 4 ) . dechex(time());
+    $FileID = substr( md5( $_POST["filename"]. $_POST["size"] ), 0, 4 ) . dechex(time());
     $RemovePassword = GetRand( 8 );
 
     if ( file_exists( "{$basepath}{$FileID}" ) )
