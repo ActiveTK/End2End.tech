@@ -56,7 +56,7 @@
         _("uploader").onsubmit = function () {
 
             if (_("file").files.length == 0)
-                return !alert('ファイルを選択して下さい。');
+                return !alert("ファイルを選択して下さい。");
 
             _("submitData").disabled = true;
             _("stat").innerText = "ファイルをアップロードしています..。";
@@ -75,7 +75,11 @@
                     return !alert("パスワードを指定して下さい。");
 
                 if (_("file").files.length != 1)
-                    return !alert('複数のファイルを同時に暗号化してアップロードすることはできません。');
+                    return !alert("複数のファイルを同時に暗号化してアップロードすることはできません。");
+
+                if (_("file").files[0].size > 1024 * 1024 * 100) {
+                    return !alert("100MBを超える巨大なファイルの暗号化には対応していません。");
+                }
 
                 let reader = new FileReader();
                 reader.readAsDataURL(_("file").files[0]);
@@ -127,12 +131,18 @@
                     let list = new DataTransfer();
                     list.items.add(fList[i]);
                     _("fileOne").files = list.files;
-                    sendFile(new FormData($("#uploader").get(0)));
+
+                    if (fList[i].size > 1024 * 1024 * 100) {
+                        sendBigFile(_("fileOne").files[0]);
+                    } else {
+                        sendFile(new FormData($("#uploader").get(0)));
+                    }
 
                 }
 
                 try {
                     _("file").value = "";
+                    _("fileOne").value = "";
                 } catch { }
 
             }
@@ -213,6 +223,82 @@
                 _("DownloadLimit").setAttribute("name", "DownloadLimit");
 
         });
+
+    }
+
+    function sendBigFile(filedata) {
+
+        let pieceSize = 80 * 1024 * 1024;
+        let pieceCount = Math.ceil(filedata.size / pieceSize);
+        getOverridableKey(filedata, pieceCount, function(dataKey) {
+
+            /*  dataKeyの中身
+                "Status" => "OK",
+                "FileID" => $FileID,
+                "FileName" => basename( $FileName ),
+                "URL" => "https://end2end.tech/" . $FileID,
+                "ChunksAvailable" => $Hash,
+                "RemovePassword" => $RemovePassword
+            */
+            console.log(dataKey);
+
+            // todo: dataKeyに基づいてそれぞれのファイルを送信
+            /*
+            
+            for(let sentFileCount = 0; e < pieceCount; e++) {
+
+            let pieceOfFile = new FormData;
+            pieceOfFile.append("data", filedata.slice(sentFileCount * pieceSize, (sentFileCount + 1) * pieceSize));
+            pieceOfFile.append("id", FileID);
+            pieceOfFile.append("key", OverrideKey);
+  
+            __sendPieceOfFile(pieceOfFile);
+  
+            console.log("Upload %: " + Math.ceil(100 * (sentFileCount + 1) / pieceCount).toString() + "\nUploaded/Total: " + sentFileCount + "/" + pieceCount);
+  
+            }
+
+            */
+
+        });
+
+    }
+
+    function getOverridableKey(fileData, chunkCount, callback) {
+
+        let request_key = new FormData;
+        request_key.append("filename", fileData.name);
+        request_key.append("size", fileData.size);
+        request_key.append("chunks", chunkCount);
+
+        if (_("blockVPN").checked)
+            request_key.append("blockVPN", "true");
+        if (_("setLimitDownload").checked) {
+            request_key.append("setLimitDownload", "true");
+            request_key.append("maxDownloadCount", _("maxDownloadCount").value);
+        }
+        if (_("setDateLimit").checked) {
+            request_key.append("setDateLimit", "true");
+            request_key.append("DownloadLimit", _("DownloadLimit").value);
+        }
+        
+        fetch(
+          window.end2endtech.Endpoint + "get-overridablekey",
+          {
+            body: request_key,
+            method: "POST",
+            headers: {
+              Accept: "application/json"
+            },
+            cache: 'no-cache'
+          }
+        )
+        .then(
+          e => e.json()
+        )
+        .then(
+          d => callback(d)
+        )
 
     }
 
