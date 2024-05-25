@@ -53,6 +53,6 @@
             </nav>
           </div>
         </div>
-        <div class="border-t border-gray-800 py-8 text-center text-sm text-gray-400">(c) 2023 ActiveTK.</div>
+        <div class="border-t border-gray-800 py-8 text-center text-sm text-gray-400">(c) 2023 ActiveTK. - Released under the MIT license</div>
       </footer>
     </div>
