@@ -5,7 +5,7 @@
 
   $basepath = "../../objects/blob/";
 
-  if( isset( $_POST["RawData"], $_POST["FileID"] ) ) {
+  if( isset( $_POST["RawData"] ) && isset( $_POST["FileID"] ) ) {
 
     $Size = strlen( $_POST["RawData"] );
     if( $Size > 80 * 1024 * 1024 + 1024 )
