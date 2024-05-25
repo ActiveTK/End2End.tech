@@ -209,7 +209,7 @@
                 return;
             }
 
-            UploadPeaceWithLoop();
+            UploadPeaceWithLoop(dataKey, filedata, 0, pieceCount);
             _("stat").innerText = "";
 
             try {
