@@ -22,4 +22,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          exclude: "[**/.**/**, .gitignore,  **/.git/**, **/node_modules/**, **/vendor/**, .editorconfig, README.md, .phpcs.xml.dist, **.json, **.lock, postcss.config.js, **/src/**]"
+          exclude: "[**/.**/**, .gitignore,  **/.git/**, **/node_modules/**, **/vendor/**, .editorconfig, README.md, .phpcs.xml.dist, **.json, **.lock, postcss.config.js]"
