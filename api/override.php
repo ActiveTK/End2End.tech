@@ -57,7 +57,7 @@
         "update UploadFiles set FileSize = ?, FileHash = ? where FileID = ?;"
       );
       $stmt->execute([
-        strlen($NonComData)
+        strlen($NonComData),
         $ChunksAvailable,
         $FileID
       ]);
