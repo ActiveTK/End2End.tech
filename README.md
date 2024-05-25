@@ -8,7 +8,7 @@ End2End暗号化対応・ノーログで、安心安全のオープンソース�
 <a href="https://end2end.tech/" target="_blank">https://end2end.tech/</a>
 
 ## Features
-<li>1ファイル100MBまでアップロード可能</li>
+<li>1ファイル2040MBまでアップロード可能</li>
 <li>パスワードによるEnd to End暗号化</li>
 <li>ハッシュ値の表示</li>
 <li>ダウンロード回数制限</li>
