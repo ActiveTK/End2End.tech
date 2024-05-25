@@ -209,20 +209,23 @@
                 return;
             }
 
-            UploadPeaceWithLoop(dataKey, filedata, 0, pieceCount, pieceSize);
-            _("stat").innerText = "";
+            UploadPeaceWithLoop(dataKey, filedata, 0, pieceCount, pieceSize, function() {
 
-            try {
-                _("fileOne").value = "";
-            } catch (e) { }
+                _("stat").innerText = "";
 
-            createNewURL(dataKey);
+                try {
+                    _("fileOne").value = "";
+                } catch (e) { }
+    
+                createNewURL(dataKey);
+
+            });
 
         });
 
     }
 
-    function UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize) {
+    function UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize, finalFunction) {
 
         console.log("Upload %: " + Math.ceil(100 * (sentFileCount + 1) / pieceCount).toString() + "\nUploaded/Total: " + sentFileCount + "/" + pieceCount);
 
@@ -241,7 +244,10 @@
 
             sentFileCount++;
             if ( sentFileCount != pieceCount )
-                UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize);
+                UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize, finalFunction);
+            else
+                finalFunction();
+            
         });
     }
 
