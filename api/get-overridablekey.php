@@ -30,7 +30,7 @@
       die( json_encode( array( "Error"=>"エラー: このファイルは他の方によって既にアップロードされています。(ERR_FILE_EXISTS)" ), JSON_UNESCAPED_UNICODE ) );
 
     // $Hashは現段階では不明であり、これを残留チャンク数として使用する
-    $Hash = ceil( $_POST["size"] % (80 * 1024 * 1024) ) ;
+    $Hash = ceil( $_POST["size"] / (80 * 1024 * 1024) ) ;
 
     $DownloadLimit = "0";
     if ( isset( $_POST["setLimitDownload"] ) && isset( $_POST["maxDownloadCount"] ) ) {
