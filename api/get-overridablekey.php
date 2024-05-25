@@ -86,11 +86,7 @@
     }
 
     file_put_contents(
-        "{$basepath}{$FileID}",
-        gzdeflate(
-            "",
-            9
-        )
+        "{$basepath}{$FileID}", ""
     );
 
     exit(
