@@ -232,8 +232,8 @@
             speed_guess = "(計測中)";
             time_guess = "(計測中)";
         } else {
-            speed_guess = (pieceSize * sentFileCount / ((Date.now() - startDate) / 1000) / 1024 / 1024).toFixed(2);
-            time_guess = pieceSize * (pieceCount - sentFileCount) / speed_guess;
+            speed_guess = (pieceSize * sentFileCount / ((Date.now() - startDate) / 1000) / 1024 / 1024 * 8).toFixed(2);
+            time_guess = (pieceSize * (pieceCount - sentFileCount) / speed_guess).toFixed(2);
         }
 
         _("stat").innerHTML = "チャンク送信 " + Math.ceil(100 * sentFileCount / pieceCount).toString() + "%完了(" + sentFileCount + "/" + pieceCount + ")<br>" +
