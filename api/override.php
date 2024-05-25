@@ -47,7 +47,23 @@
 
     $ChunksAvailable = FileInfo["FileHash"] * 1 - 1;
     if ( $ChunksAvailable == 0 ) {
-      FileInfo["FileHash"] = hash( "sha256", $NonComData );
+      $ChunksAvailable = hash( "sha256", $NonComData );
+    }
+
+    try {
+
+      $dbh = new PDO( DSN, DB_USER, DB_PASS );
+      $stmt = $dbh->prepare(
+        "update UploadFiles set FileSize = ?, FileHash = ? where FileID = ?;"
+      );
+      $stmt->execute([
+        strlen($NonComData)
+        $ChunksAvailable,
+        $FileID
+      ]);
+
+    } catch (\Throwable $e) {
+      die( json_encode( array( "Error"=>"エラー: アップロードの処理に失敗しました。(ERR_SQL_FAILED)" ), JSON_UNESCAPED_UNICODE ) );
     }
 
     exit(
