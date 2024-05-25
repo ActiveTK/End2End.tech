@@ -54,7 +54,7 @@
             9
         )
       );
-      $ChunksAvailable = hash( "sha256", $NonComData );
+      $ChunksAvailable = hash_file( "sha256", "{$basepath}{$FileID}" );
 
     }
 

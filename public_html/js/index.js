@@ -209,7 +209,7 @@
                 return;
             }
 
-            UploadPeaceWithLoop(dataKey, filedata, 0, pieceCount, pieceSize, function() {
+            UploadPeaceWithLoop(dataKey, filedata, 0, pieceCount, pieceSize, Date.now(), function() {
 
                 _("stat").innerText = "";
 
@@ -225,9 +225,18 @@
 
     }
 
-    function UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize, finalFunction) {
+    function UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize, startDate, finalFunction) {
 
-        console.log("Upload %: " + Math.ceil(100 * (sentFileCount + 1) / pieceCount).toString() + "\nUploaded/Total: " + sentFileCount + "/" + pieceCount);
+        if (sentFileCount == 0) {
+            let speed_guess = "計測中";
+            let time_guess = "計測中";
+        } else {
+            let speed_guess = (pieceSize * sentFileCount / ((Date.now() - startTime) / 1000) / 1024 / 1024).toFixed(2);
+            let time_guess = pieceSize * (pieceCount - sentFileCount) / speed_guess;
+        }
+
+        _("stat").innerHTML = "チャンク送信 " + Math.ceil(100 * sentFileCount / pieceCount).toString() + "%完了(" + sentFileCount + "/" + pieceCount + ")<br>" +
+                              "通信速度: " + speed_guess + "Mbps, 推定残り時間: " + time_guess + "秒";
 
         let pieceOfFile = new FormData;
         pieceOfFile.append("RawData", filedata.slice(sentFileCount * pieceSize, (sentFileCount + 1) * pieceSize));
@@ -244,10 +253,10 @@
 
             sentFileCount++;
             if ( sentFileCount != pieceCount )
-                UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize, finalFunction);
+                UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize, startDate, finalFunction);
             else
                 finalFunction();
-            
+
         });
     }
 
