@@ -34,7 +34,15 @@
 
   // パスの末尾がスラッシュである場合の処理
   if ( strlen( request_path ) > 0 && substr( request_path, -1 ) == "/" ) {
-    header( "Location: https://end2end.tech/" . strtolower( substr( $_GET["request"], 0, -1 ) ), true, 301 );
+
+    $fixedURI = strtolower( substr( $_GET["request"], 0, -1 ) );
+    // 無限ループ防止
+    if ( $fixedURI == request_path ) {
+      header( "Location: https://end2end.tech/" );
+      exit();
+    }
+
+    header( "Location: https://end2end.tech/{$fixedURI}", true, 301 );
     exit();
   }
 
