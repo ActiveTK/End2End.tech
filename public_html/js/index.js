@@ -209,7 +209,7 @@
                 return;
             }
 
-            UploadPeaceWithLoop(dataKey, filedata, 0, pieceCount);
+            UploadPeaceWithLoop(dataKey, filedata, 0, pieceCount, pieceSize);
             _("stat").innerText = "";
 
             try {
@@ -222,7 +222,7 @@
 
     }
 
-    function UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount) {
+    function UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize) {
 
         console.log("Upload %: " + Math.ceil(100 * (sentFileCount + 1) / pieceCount).toString() + "\nUploaded/Total: " + sentFileCount + "/" + pieceCount);
 
@@ -241,7 +241,7 @@
 
             sentFileCount++;
             if ( sentFileCount != pieceCount )
-                UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount);
+                UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize);
         });
     }
 
