@@ -33,6 +33,9 @@
   // デバッグモード
   define( "DEBUG", false );
 
+  // 管理者の削除用パスワード
+  define( "ForceRemovePassword", "password" );
+
   /* MySQLの設定 */
 
   // データベース名

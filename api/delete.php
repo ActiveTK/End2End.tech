@@ -22,7 +22,7 @@
 
       define( "FileInfo", $Note );
 
-      if ( $_GET["password"] == FileInfo["DeletePassword"] ) {
+      if ( $_GET["password"] == FileInfo["DeletePassword"] || $_GET["password"] == ForceRemovePassword ) {
 
         $stmt = $dbh->prepare( 'delete from UploadFiles where FileID = ?;' );
         $stmt->execute( [FileInfo["FileID"]] );
