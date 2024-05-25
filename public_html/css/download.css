@@ -30,3 +30,7 @@ body {
 .flex {
     display: flex;
 }
+
+.marginTopLittle {
+    margin-top: 20px;
+}

@@ -136,7 +136,7 @@
 			let speed_guess = (evt.loaded / ((Date.now() - startDate) / 1000) / 1024 / 1024 * 8).toFixed(2);
 		    let time_guess = ((evt.total - evt.loaded) / (speed_guess * 1024 * 1024 / 8)).toFixed();
 	
-			_("stat").innerHTML = "ダウンロード中..(" + (100 * evt.loaded / evt.total | 0) + "%完了)..。<br>" +
+			_("stat").innerHTML = "ダウンロード中(" + (100 * evt.loaded / evt.total | 0) + "%完了)..。<br>" +
 								  "通信速度: " + speed_guess + "Mbps, 推定残り時間: " + time_guess + "秒";
 		};
     	xhr.responseType = "arraybuffer";

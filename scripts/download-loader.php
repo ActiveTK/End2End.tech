@@ -123,7 +123,7 @@
           <?php } ?>
 
           <br>
-          <span id="stat"></span>
+          <span id="stat" class="marginTopLittle"></span>
           <br>
         </p>
 
