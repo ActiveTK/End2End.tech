@@ -7,6 +7,7 @@
 
   if( is_uploaded_file($_FILES["RawData"]["tmp_name"]) && isset( $_POST["FileID"] ) ) {
 
+    $FileID = $_POST["FileID"];
     $Size = filesize( $_FILES["RawData"]["tmp_name"] );
     if( $Size > 80 * 1024 * 1024 + 1024 )
       die( json_encode( array( "Error"=>"エラー: ファイルサイズが" . (80 * 1024 * 1024 + 1024) . "バイトを超えています。(ERR_FILE_TOO_BIG)" ), JSON_UNESCAPED_UNICODE ) );
