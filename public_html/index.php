@@ -20,7 +20,6 @@
 
   // メモリ制限を最大ファイルサイズに応じて緩和
   ini_set("memory_limit", (MaxUploadSize * 3 / 1024 / 1024) . "M");
-  header( "Memory-Limit: " . (MaxUploadSize * 3 / 1024 / 1024) . "M" );
 
   // 必須ヘッダーの出力
   header( "X-Frame-Options: deny" );

@@ -21,6 +21,9 @@
   // MySQLの設定取得
   require_once( "./../../Config.php" );
 
+  // メモリ制限を最大ファイルサイズに応じて緩和
+  ini_set("memory_limit", (MaxUploadSize * 3 / 1024 / 1024) . "M");
+
   // ホーム
   if ( empty( request_path ) ) {
     require_once( "../../api/docs.php" );
