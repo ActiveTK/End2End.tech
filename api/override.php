@@ -5,9 +5,9 @@
 
   $basepath = "../../objects/blob/";
 
-  if( isset( $_POST["RawData"] ) && isset( $_POST["FileID"] ) ) {
+  if( is_uploaded_file($_FILES["RawData"]["tmp_name"]) && isset( $_POST["FileID"] ) ) {
 
-    $Size = strlen( $_POST["RawData"] );
+    $Size = filesize( $_FILES["RawData"]["tmp_name"] );
     if( $Size > 80 * 1024 * 1024 + 1024 )
       die( json_encode( array( "Error"=>"エラー: ファイルサイズが" . (80 * 1024 * 1024 + 1024) . "バイトを超えています。(ERR_FILE_TOO_BIG)" ), JSON_UNESCAPED_UNICODE ) );
     
@@ -36,18 +36,25 @@
       die( json_encode( array( "Error"=>"エラー: 無効なファイルハッシュです。(INVAILED_FILEHASH)" ), JSON_UNESCAPED_UNICODE ) );
     }
 
-    $NonComData = gzinflate( file_get_contents( "{$basepath}{$FileID}" ) ) . $_POST["RawData"];
-    file_put_contents(
+    $ChunksAvailable = FileInfo["FileHash"] * 1 - 1;
+
+    $a = fopen( "{$basepath}{$FileID}", "a" );
+    @fwrite($a, file_get_contents($_FILES["RawData"]["tmp_name"]));
+    fclose($a);
+
+    $FileLen = filesize( "{$basepath}{$FileID}" );
+
+    if ( $ChunksAvailable == 0 ) {
+
+      file_put_contents(
         "{$basepath}{$FileID}",
         gzdeflate(
-            $NonComData,
+            file_get_contents( "{$basepath}{$FileID}" ),
             9
         )
-    );
-
-    $ChunksAvailable = FileInfo["FileHash"] * 1 - 1;
-    if ( $ChunksAvailable == 0 ) {
+      );
       $ChunksAvailable = hash( "sha256", $NonComData );
+
     }
 
     try {
@@ -57,7 +64,7 @@
         "update UploadFiles set FileSize = ?, FileHash = ? where FileID = ?;"
       );
       $stmt->execute([
-        strlen($NonComData),
+        $FileLen,
         $ChunksAvailable,
         $FileID
       ]);
