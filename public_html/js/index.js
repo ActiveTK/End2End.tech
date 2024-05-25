@@ -74,7 +74,7 @@
                 if (!_("password").value)
                     return !alert("パスワードを指定して下さい。");
 
-                if (_("file").files.length != 0)
+                if (_("file").files.length != 1)
                     return !alert('複数のファイルを同時に暗号化してアップロードすることはできません。');
 
                 let reader = new FileReader();
@@ -109,6 +109,13 @@
                     enc = "";
 
                     sendFile(new FormData($("#uploader").get(0)));
+
+
+                    try {
+                        _("file").value = "";
+                    } catch { }
+
+
                 };
             }
             else {
@@ -123,11 +130,12 @@
                     sendFile(new FormData($("#uploader").get(0)));
 
                 }
-            }
 
-            try {
-                _("file").value = "";
-            } catch { }
+                try {
+                    _("file").value = "";
+                } catch { }
+
+            }
 
             return false;
         }

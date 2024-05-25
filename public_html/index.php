@@ -84,7 +84,7 @@
     return
       "<!DOCTYPE html><!--\n" .
         "\n" .
-        "  End2End.tech / (c) 2023 ActiveTK.\n\n" .
+        "  End2End.tech / (c) 2024 ActiveTK.\n\n" .
         "  Server-Side Time: " . ( microtime( true ) - LOAD_START_TIME ) . "s\n" .
         "  Cached Date: " . ( new DateTime( "now", new DateTimeZone( "GMT" ) ) ) -> format( "Y-m-d H:i:sP" ) . "\n" .
       "\n-->" . $buffer . "\n";
