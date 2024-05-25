@@ -114,7 +114,6 @@
 
                     sendFile(new FormData($("#uploader").get(0)));
 
-
                     try {
                         _("file").value = "";
                     } catch { }
@@ -141,8 +140,17 @@
                 }
 
                 try {
+
                     _("file").value = "";
                     _("fileOne").value = "";
+
+                    _("submitData").disabled = false;
+                    _("password").setAttribute("name", "passwd");
+                    if (!_("setLimitDownload").checked)
+                        _("maxDownloadCount").setAttribute("name", "maxDownloadCount");
+                    if (!_("setDateLimit").checked)
+                        _("DownloadLimit").setAttribute("name", "DownloadLimit");
+
                 } catch { }
 
             }
@@ -176,51 +184,15 @@
             for (let b in t) {
                 if (b == "Error") {
                     _("stat").innerText = t["Error"];
-
-                    _("submitData").disabled = false;
-
-                    _("password").setAttribute("name", "passwd");
-
-                    if (!_("setLimitDownload").checked)
-                        _("maxDownloadCount").setAttribute("name", "maxDownloadCount");
-
-                    if (!_("setDateLimit").checked)
-                        _("DownloadLimit").setAttribute("name", "DownloadLimit");
                 }
                 else if (b == "Status" && t["Status"] == "OK") {
-                    _("stat").innerText = "";
-
-                    try {
-                        _("fileOne").value = "";
-                    }
-                    catch { }
-
                     createNewURL(t);
-
-                    _("submitData").disabled = false;
-
-                    _("password").setAttribute("name", "passwd");
-
-                    if (!_("setLimitDownload").checked)
-                        _("maxDownloadCount").setAttribute("name", "maxDownloadCount");
-
-                    if (!_("setDateLimit").checked)
-                        _("DownloadLimit").setAttribute("name", "DownloadLimit");
                 }
             }
 
         }).fail(function (t, e, o) {
 
             _("stat").innerText = "送信中にエラーが発生しました:" + o;
-            _("submitData").disabled = false;
-
-            _("password").setAttribute("name", "passwd");
-
-            if (!_("setLimitDownload").checked)
-                _("maxDownloadCount").setAttribute("name", "maxDownloadCount");
-
-            if (!_("setDateLimit").checked)
-                _("DownloadLimit").setAttribute("name", "DownloadLimit");
 
         });
 
@@ -231,37 +203,46 @@
         let pieceSize = 80 * 1024 * 1024;
         let pieceCount = Math.ceil(filedata.size / pieceSize);
         getOverridableKey(filedata, function(dataKey) {
-
-            /*  dataKeyの中身
-                "Status" => "OK",
-                "FileID" => $FileID,
-                "FileName" => basename( $FileName ),
-                "URL" => "https://end2end.tech/" . $FileID,
-                "ChunksAvailable" => $Hash,
-                "RemovePassword" => $RemovePassword
-            */
-            console.log(dataKey);
-
-            // todo: dataKeyに基づいてそれぞれのファイルを送信
-            /*
             
-            for(let sentFileCount = 0; e < pieceCount; e++) {
-
-            let pieceOfFile = new FormData;
-            pieceOfFile.append("data", filedata.slice(sentFileCount * pieceSize, (sentFileCount + 1) * pieceSize));
-            pieceOfFile.append("id", FileID);
-            pieceOfFile.append("key", OverrideKey);
-  
-            __sendPieceOfFile(pieceOfFile);
-  
-            console.log("Upload %: " + Math.ceil(100 * (sentFileCount + 1) / pieceCount).toString() + "\nUploaded/Total: " + sentFileCount + "/" + pieceCount);
-  
+            if (dataKey["Error"]) {
+                _("stat").innerText = dataKey["Error"];
+                return;
             }
 
-            */
+            UploadPeaceWithLoop();
+            _("stat").innerText = "";
+
+            try {
+                _("fileOne").value = "";
+            } catch (e) { }
+
+            createNewURL(dataKey);
 
         });
 
+    }
+
+    function UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount) {
+
+        console.log("Upload %: " + Math.ceil(100 * (sentFileCount + 1) / pieceCount).toString() + "\nUploaded/Total: " + sentFileCount + "/" + pieceCount);
+
+        let pieceOfFile = new FormData;
+        pieceOfFile.append("RawData", filedata.slice(sentFileCount * pieceSize, (sentFileCount + 1) * pieceSize));
+        pieceOfFile.append("FileID", dataKey["FileID"]);
+
+        __sendPieceOfFile(pieceOfFile).then(resultArray => {
+
+            if (resultArray["Error"]) {
+                if (confirm("巨大ファイルの分割送信時にエラーが発生しました。\n" + resultArray["Error"] + "\n再送を行いますか？"))
+                    sentFileCount -= 1;
+                else
+                    return;
+            }
+
+            sentFileCount++;
+            if ( sentFileCount != pieceCount )
+                UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount);
+        });
     }
 
     function getOverridableKey(fileData, callback) {
@@ -298,6 +279,25 @@
         .then(
           d => callback(d)
         )
+
+    }
+
+    function __sendPieceOfFile(pieceOfFile) {
+     
+        return fetch(
+            window.end2endtech.Endpoint + "override",
+            {
+              body: pieceOfFile,
+              method: "POST",
+              headers: {
+                Accept: "application/json"
+              },
+              cache: 'no-cache'
+            }
+          )
+          .then(
+            e => e.json()
+          )
 
     }
 

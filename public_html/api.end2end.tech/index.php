@@ -51,6 +51,11 @@
     require_once( "../../api/get-overridablekey.php" );
     exit();
   }
+  else if ( request_path == "override" ) {
+    header( "Access-Control-Allow-Origin: *" );
+    require_once( "../../api/override.php" );
+    exit();
+  }
 
   // ファイルが存在しない場合
   header( "HTTP/1.1 404 Not Found" );
