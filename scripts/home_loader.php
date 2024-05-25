@@ -2,7 +2,7 @@
   
   // サイズを適切な単位に変換する関数
   function byte_format($size, $dec=-1, $separate=false){
-    $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
+    $units = array('B', 'KB', 'MB');
     $digits = ($size == 0) ? 0 : floor( log($size, 1024) );
 	
     $over = false;
