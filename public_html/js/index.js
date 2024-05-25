@@ -229,10 +229,10 @@
 
         let speed_guess, time_guess;
         if (sentFileCount == 0) {
-            speed_guess = "計測中";
-            time_guess = "計測中";
+            speed_guess = "(計測中)";
+            time_guess = "(計測中)";
         } else {
-            speed_guess = (pieceSize * sentFileCount / ((Date.now() - startTime) / 1000) / 1024 / 1024).toFixed(2);
+            speed_guess = (pieceSize * sentFileCount / ((Date.now() - startDate) / 1000) / 1024 / 1024).toFixed(2);
             time_guess = pieceSize * (pieceCount - sentFileCount) / speed_guess;
         }
 
