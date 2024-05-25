@@ -227,12 +227,13 @@
 
     function UploadPeaceWithLoop(dataKey, filedata, sentFileCount, pieceCount, pieceSize, startDate, finalFunction) {
 
+        let speed_guess, time_guess;
         if (sentFileCount == 0) {
-            let speed_guess = "計測中";
-            let time_guess = "計測中";
+            speed_guess = "計測中";
+            time_guess = "計測中";
         } else {
-            let speed_guess = (pieceSize * sentFileCount / ((Date.now() - startTime) / 1000) / 1024 / 1024).toFixed(2);
-            let time_guess = pieceSize * (pieceCount - sentFileCount) / speed_guess;
+            speed_guess = (pieceSize * sentFileCount / ((Date.now() - startTime) / 1000) / 1024 / 1024).toFixed(2);
+            time_guess = pieceSize * (pieceCount - sentFileCount) / speed_guess;
         }
 
         _("stat").innerHTML = "チャンク送信 " + Math.ceil(100 * sentFileCount / pieceCount).toString() + "%完了(" + sentFileCount + "/" + pieceCount + ")<br>" +
