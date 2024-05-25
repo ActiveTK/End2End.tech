@@ -37,7 +37,7 @@
 
     $fixedURI = strtolower( substr( $_GET["request"], 0, -1 ) );
     // 無限ループ防止
-    if ( $fixedURI == request_path ) {
+    if ( request_path == "js" || request_path == "css" ) {
       header( "Location: https://end2end.tech/" );
       exit();
     }
