@@ -28,7 +28,7 @@
     $RemovePassword = GetRand( 8 );
 
     if ( file_exists( "{$basepath}{$FileID}" ) )
-      die( json_encode( array( "Error"=>"エラー: このファイルは他の方によって既にアップロードされています。(ERR_FILE_EXISTS)" ), JSON_UNESCAPED_UNICODE ) );
+      die( json_encode( array( "Error"=>"エラー: このファイルは他の方によって既にアップロードされています。(ERR_FILE_EXISTS)", "FileID" => $FileID ), JSON_UNESCAPED_UNICODE ) );
 
     $Hash = hash_file( 'sha256', $_FILES['file']['tmp_name'] );
 
